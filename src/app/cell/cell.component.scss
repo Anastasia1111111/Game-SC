@@ -1,9 +1,14 @@
-div{
+button{
     display: flex;
-    margin: 16px;
+    padding: 0;
+    margin-left: 12px;
+    margin-top: 12px;
     margin-right: 0;
-    border: 2px solid EDC7FF75(153, 104, 104);
-    background-image: linear-gradient(to bottom, #EDC7FF75 46%, #AB77FFBD 74%);
+    border: 2px solid;
+    background: linear-gradient(180deg, #FFFFFF -31.99%, rgba(255, 255, 255, 0) 113.98%);
+    border-image-source: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(14px);
+    box-shadow: -21px 15px 50px 0px #1D264640;
     border-radius: 16px;
     height: 64px;
     width: 64px;

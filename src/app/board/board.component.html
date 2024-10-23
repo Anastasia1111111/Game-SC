@@ -1,1 +1,7 @@
-<div><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell><app-cell></app-cell></div>
+<div>
+    @for(buttonX of buttons; track $index; let idx = $index){
+        <!-- <button (click) = "onButtonClick(buttonX)" [ngClass] = "{'active-button':isClicked}">{{idx}}</button>  -->
+        <button (click) = "onButtonClick(buttonX)">{{idx}}</button>
+}
+</div>
+

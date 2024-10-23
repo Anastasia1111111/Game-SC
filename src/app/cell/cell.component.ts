@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cell',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './cell.component.scss'
 })
 export class CellComponent {
-
+  @Output() Clicked: boolean = false;
 }

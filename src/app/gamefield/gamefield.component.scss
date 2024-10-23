@@ -1,0 +1,19 @@
+div{
+    display: flex;
+    width: 860;
+    height: 946;
+    border-radius: 25px;
+    border: 2px solid;
+    border-image-source: radial-gradient(0% 50% at 50% 50%, #0F0F0F 0%, rgba(21, 21, 21, 0) 100%),
+    radial-gradient(198.89% 50% at 50% 50%, #0A7ABF 0%, rgba(255, 255, 255, 0.7) 100%),
+    radial-gradient(170.42% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(111.49deg, rgba(255, 255, 255, 0.4) -8.95%, rgba(255, 255, 255, 0.01) 114%);
+
+    //z-index: 1;
+    backdrop-filter: blur(100px);
+}
+
+button{
+    width: 100px;
+    height: 70px;
+}
