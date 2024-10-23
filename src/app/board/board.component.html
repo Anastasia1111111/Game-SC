@@ -1,7 +1,7 @@
 <div>
-    @for(buttonX of buttons; track $index; let idx = $index){
-        <!-- <button (click) = "onButtonClick(buttonX)" [ngClass] = "{'active-button':isClicked}">{{idx}}</button>  -->
-        <button (click) = "onButtonClick(buttonX)">{{idx}}</button>
-}
+  @for (buttonX of buttonsX; track $index; let idx = $index) {
+    @for (buttonY of buttonsY; track $index; let idy = $index) {
+      <app-cell [positionX]="idx" [positionY]="idy"></app-cell>
+    }
+  }
 </div>
-
