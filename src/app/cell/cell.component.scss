@@ -1,24 +1,36 @@
-button{
-    display: flex;
-    padding: 0;
-    margin-left: 12px;
-    margin-top: 12px;
-    margin-right: 0;
-    border: 2px solid;
-    background: linear-gradient(180deg, #FFFFFF -31.99%, rgba(255, 255, 255, 0) 113.98%);
-    border-image-source: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    backdrop-filter: blur(14px);
-    box-shadow: -21px 15px 50px 0px #1D264640;
-    border-radius: 16px;
-    height: 64px;
-    width: 64px;
+button {
+  display: flex;
+  padding: 0;
+  margin-left: 12px;
+  margin-top: 12px;
+  margin-right: 0;
+  border: 2px solid;
+  background: linear-gradient(
+    180deg,
+    #ffffff -31.99%,
+    rgba(255, 255, 255, 0) 113.98%
+  );
+  border-image-source: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(14px);
+  box-shadow: -21px 15px 50px 0px #1d264640;
+  border-radius: 16px;
+  height: 64px;
+  width: 64px;
 }
 
-:host(.selected) > button{
-    background-color: red;
-  }
+:host(.selected) > button {
+  background-color: red;
+}
 
-:host(.possible) > button{
-    border-color: black;
-    border: 3px solid;
+:host(.possible) > button {
+  border-color: black;
+  border: 3px solid;
+}
+
+:host(.disabled) > button {
+  pointer-events: none;
 }

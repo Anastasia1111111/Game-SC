@@ -4,7 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class GameService {
-
+  knightPositions = [
+    [2, 1],
+    [1, 2],
+    [-1, 2],
+    [-2, 1],
+    [-2, -1],
+    [-1, -2],
+    [1, -2],
+    [2, -1],
+  ];
   buttonState = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -18,30 +27,37 @@ export class GameService {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
 
-  NextStepY(positionY: number){
-    let arrayY: number[] = [];
-    positionY += 1;
-    arrayY.push(positionY);
-    arrayY.push(positionY);
-    positionY +=1;
-    arrayY.push(positionY);
-    positionY -= 3;
-    arrayY.push(positionY);
-    positionY -=1;
-    arrayY.push(positionY);
-    return arrayY;
+  historyMoves: number[][] = [];
+
+  selectCell(positionX: number, positionY: number) {
+    this.buttonState[positionX][positionY] = 1;
+    this.historyMoves.push([positionX, positionY]);
   }
-  NextStepX(positionX: number){
-    let arrayX: number[] = [];
-    positionX += 2;
-    arrayX.push(positionX);
-    positionX -=4;
-    arrayX.push(positionX);
-    positionX -= 3;
-    arrayX.push(positionX);
-    positionX -=1;
-    arrayX.push(positionX);
-    return arrayX;
+
+  isValidMove(positionX: number, positionY: number): boolean {
+    return positionX >= 0 && positionX < 10 && positionY >= 0 && positionY < 10;
   }
+
+  isPossible(positionX: number, positionY: number) {
+    let result = false;
+    if (this.historyMoves.length !== 0) {
+      let last = this.historyMoves[this.historyMoves.length - 1];
+      this.knightPositions.forEach((knightPosition) => {
+        let possiblePositionX = last[0] + knightPosition[0];
+        let possiblePositionY = last[1] + knightPosition[1];
+        if (this.isValidMove(possiblePositionX, possiblePositionY)) {
+          if (
+            possiblePositionX === positionX &&
+            possiblePositionY === positionY &&
+            !this.buttonState[possiblePositionX][possiblePositionY]
+          ) {
+            result = true;
+          }
+        }
+      });
+    }
+    return result;
+  }
+
   constructor() {}
 }
