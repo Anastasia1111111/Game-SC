@@ -1,4 +1,4 @@
-import { Component, Output, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { GameService } from '../game.service';
 
 @Component({
@@ -11,15 +11,17 @@ import { GameService } from '../game.service';
 export class CellComponent {
   @Input() positionX!: number;
   @Input() positionY!: number;
-
-  @HostBinding('class.valid') get valid() {
+  possiblePositionX!: number[];
+  possiblePositionY!: number[];
+  @HostBinding('class.selected') get selected() {
     return this.gameService.buttonState[this.positionX][this.positionY] === 1;
   }
 
   constructor(private gameService: GameService) {}
-
   OnButtonClick() {
     this.gameService.buttonState[this.positionX][this.positionY] = 1;
-    console.log(this.gameService.buttonState);
+    this.possiblePositionY = this.gameService.NextStepY(this.positionX);
+    this.possiblePositionX =  this.gameService.NextStepX(this.positionY);
+    console.log(this.possiblePositionX, this.possiblePositionY);
   }
 }

@@ -13,3 +13,12 @@ button{
     height: 64px;
     width: 64px;
 }
+
+:host(.selected) > button{
+    background-color: red;
+  }
+
+:host(.possible) > button{
+    border-color: black;
+    border: 3px solid;
+}
