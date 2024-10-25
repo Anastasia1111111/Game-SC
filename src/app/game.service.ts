@@ -59,5 +59,17 @@ export class GameService {
     return result;
   }
 
+  Restart(){
+    for(let i = 0; i < 10; i++){
+      for(let j = 0; j < 10; j++)
+      {
+        this.buttonState[i][j] = 0;
+      }
+    }
+    this.historyMoves = [];
+  }
+
+
+
   constructor() {}
 }

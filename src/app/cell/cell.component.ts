@@ -18,6 +18,7 @@ export class CellComponent {
   @Input() positionX!: number;
   @Input() positionY!: number;
   @HostBinding('class.selected') get selected() {
+    console.log([this.positionX][this.positionY], this.gameService.buttonState[this.positionX][this.positionY])
     return this.gameService.buttonState[this.positionX][this.positionY] === 1;
   }
   @HostBinding('class.possible') get possible() {
@@ -30,6 +31,11 @@ export class CellComponent {
       this.gameService.buttonState[this.positionX][this.positionY] === 1
     );
   }
+
+  // @HostBinding('class.restarted') get restarted(){
+  //   console.log(this.gameService.checkRestart());
+  //   return this.gameService;
+  // } 
 
   constructor(private gameService: GameService) {}
   OnButtonClick() {
