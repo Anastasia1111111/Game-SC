@@ -7,7 +7,6 @@ import { NgClass } from '@angular/common';
   imports: [CellComponent, NgClass],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardComponent {
   buttonsX = Array(10).fill(0);

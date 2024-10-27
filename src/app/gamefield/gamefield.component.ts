@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, HostBinding} from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
 
@@ -8,16 +8,14 @@ import { GameService } from '../game.service';
   imports: [BoardComponent],
   templateUrl: './gamefield.component.html',
   styleUrl: './gamefield.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GamefieldComponent {
-  constructor(private gameService:GameService){}
+  constructor(private gameService: GameService) {}
 
-  OnRestartClick(){
-   this.gameService.Restart();
-   console.log(this.gameService.buttonState);
+  OnRestartClick() {
+    this.gameService.Restart();
   }
-  OnStepBackClick(){
-
+  OnStepBackClick() {
+    this.gameService.StepBack();
   }
 }
