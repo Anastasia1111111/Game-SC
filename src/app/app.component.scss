@@ -1,4 +1,20 @@
-.circleBlue{
-    height: 428;
-    width: 428;
+.circleBlue {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
+  height: 428px;
+  width: 428px;
+  margin-left: 20vw;
+  margin-top: 10vh;
+  transform: rotate(-105deg);
+}
+
+.circleYellow {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #e65c00 0%, #f9d423 100%);
+  height: 380px;
+  width: 380px;
+  margin-left: 63vw;
+  margin-top: 75vh;
 }

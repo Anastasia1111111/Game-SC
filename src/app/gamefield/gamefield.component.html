@@ -1,5 +1,11 @@
 <div>
-  <button mat-raised-button (click) = "openDialogRestart('0ms', '0ms')">Restart</button>
-  <button (click)="OnStepBackClick()">Step back</button>
-  <app-board></app-board>
+  <button class="stepBack" (click)="OnStepBackClick()">Step back</button>
+  <button
+    class="restart"
+    mat-raised-button
+    (click)="openDialogRestart('0ms', '0ms')"
+  >
+    Restart
+  </button>
+  <!-- <app-board></app-board> -->
 </div>

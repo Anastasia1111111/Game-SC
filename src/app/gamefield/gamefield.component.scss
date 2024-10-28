@@ -1,19 +1,53 @@
-div{
-    display: flex;
-    width: 860;
-    height: 946;
-    border-radius: 25px;
-    border: 2px solid;
-    border-image-source: radial-gradient(0% 50% at 50% 50%, #0F0F0F 0%, rgba(21, 21, 21, 0) 100%),
-    radial-gradient(198.89% 50% at 50% 50%, #0A7ABF 0%, rgba(255, 255, 255, 0.7) 100%),
-    radial-gradient(170.42% 50% at 50% 50%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    background: linear-gradient(111.49deg, rgba(255, 255, 255, 0.4) -8.95%, rgba(255, 255, 255, 0.01) 114%);
-
-    //z-index: 1;
-    backdrop-filter: blur(100px);
+div {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 72px;
+  width: 860px;
+  height: 946px;
+  border-radius: 25px;
+  border: 2px solid;
+  border-image-source: radial-gradient(
+      0% 50% at 50% 50%,
+      #0f0f0f 0%,
+      rgba(21, 21, 21, 0) 100%
+    ),
+    radial-gradient(
+      198.89% 50% at 50% 50%,
+      #0a7abf 0%,
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    radial-gradient(
+      170.42% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  background: linear-gradient(
+    111.49deg,
+    rgba(255, 255, 255, 0.4) -8.95%,
+    rgba(255, 255, 255, 0.01) 114%
+  );
+  backdrop-filter: blur(100px);
 }
 
-button{
-    width: 100px;
-    height: 70px;
+.restart {
+  width: 192px;
+  height: 48px;
+  border-radius: 12px;
+  margin-top: 42px;
+  margin-left: auto;
+  right: 42px;
+  background: #f96e03;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0.56%,
+    #ffffff 49.61%,
+    rgba(255, 255, 255, 0) 100.25%
+  );
+}
+
+.stepBack {
+  width: 192px;
+  height: 48px;
+  border-radius: 12px;
 }

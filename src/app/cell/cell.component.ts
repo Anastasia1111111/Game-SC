@@ -1,10 +1,6 @@
-import {
-  Component,
-  Input,
-  HostBinding, inject
-} from '@angular/core';
+import { Component, Input, HostBinding, inject } from '@angular/core';
 import { GameService } from '../game.service';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialog,
   MatDialogActions,
@@ -21,7 +17,7 @@ import { PopUpLoseComponent } from '../pop-up-lose/pop-up-lose.component';
   standalone: true,
   imports: [MatButtonModule, PopUpWinnerComponent, PopUpLoseComponent],
   templateUrl: './cell.component.html',
-  styleUrl: './cell.component.scss'
+  styleUrl: './cell.component.scss',
 })
 export class CellComponent {
   @Input() positionX!: number;
@@ -42,8 +38,22 @@ export class CellComponent {
 
   readonly dialog = inject(MatDialog);
 
-  openDialogRestartWinner(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openDialogRestartWinner(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+  ): void {
     this.dialog.open(PopUpWinnerComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  openDialogRestartLose(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+  ): void {
+    this.dialog.open(PopUpLoseComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
@@ -54,10 +64,10 @@ export class CellComponent {
   OnButtonClick() {
     this.gameService.selectCell(this.positionX, this.positionY);
     if (this.gameService.historyMoves.length === 100) {
-      //this.openDialogRestartWinner('0','0');
+      this.openDialogRestartWinner('0', '0');
     }
     if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
-      this.openDialogRestartWinner('0','0');
+      this.openDialogRestartLose('0', '0');
     }
   }
 }
