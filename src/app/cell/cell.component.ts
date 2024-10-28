@@ -1,21 +1,32 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import {
+  Component,
+  Input,
+  HostBinding, inject
+} from '@angular/core';
 import { GameService } from '../game.service';
+import {MatButtonModule} from '@angular/material/button';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { PopUpWinnerComponent } from '../pop-up-winner/pop-up-winner.component';
+import { PopUpLoseComponent } from '../pop-up-lose/pop-up-lose.component';
 
 @Component({
   selector: 'app-cell',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule, PopUpWinnerComponent, PopUpLoseComponent],
   templateUrl: './cell.component.html',
-  styleUrl: './cell.component.scss',
+  styleUrl: './cell.component.scss'
 })
 export class CellComponent {
   @Input() positionX!: number;
   @Input() positionY!: number;
   @HostBinding('class.selected') get selected() {
-    console.log(
-      [this.positionX][this.positionY],
-      this.gameService.buttonState[this.positionX][this.positionY],
-    );
     return this.gameService.buttonState[this.positionX][this.positionY] === 1;
   }
   @HostBinding('class.possible') get possible() {
@@ -28,14 +39,25 @@ export class CellComponent {
       this.gameService.buttonState[this.positionX][this.positionY] === 1
     );
   }
+
+  readonly dialog = inject(MatDialog);
+
+  openDialogRestartWinner(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(PopUpWinnerComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
   constructor(private gameService: GameService) {}
   OnButtonClick() {
     this.gameService.selectCell(this.positionX, this.positionY);
     if (this.gameService.historyMoves.length === 100) {
-      console.log('You winner');
+      //this.openDialogRestartWinner('0','0');
     }
     if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
-      console.log('lose');
+      this.openDialogRestartWinner('0','0');
     }
   }
 }
