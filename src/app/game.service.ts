@@ -87,5 +87,14 @@ export class GameService {
     });
   }
 
+  checkLastCell(positionX: number, positionY: number) {
+    let last = this.historyMoves[this.historyMoves.length - 1];
+    return (
+      this.buttonState[positionX][positionY] === 1 &&
+      last[0] === positionX &&
+      last[1] === positionY
+    );
+  }
+
   constructor() {}
 }

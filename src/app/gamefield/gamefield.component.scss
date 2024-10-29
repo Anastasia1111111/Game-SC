@@ -30,54 +30,41 @@ div {
   backdrop-filter: blur(100px);
 }
 
-.restart {
-  position:absolute;
-  width: 192px;
-  height: 48px;
-  border-radius: 12px;
+app-pop-up-restart {
+  position: absolute;
   margin-top: 42px;
   margin-left: 628px;
-  background: #F96E03;
-  opacity: 80%;
-  //background: linear-gradient(180deg, #F96E03 0%, rgba(255, 255, 255, 0) 100%);
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 24px;
-  text-align: center;
-  color: #FFEED8;
-  font-family: Poppins;
 }
 
 .stepBack {
-  position:absolute;
+  position: absolute;
   width: 192px;
   height: 48px;
   border-radius: 12px;
   margin-top: 42px;
   margin-left: 412px;
   border: 2px solid;
-  background:#265DC7;
+  background: #265dc7;
   opacity: 80%;
   font-size: 16px;
   font-weight: 800;
   line-height: 24px;
   text-align: center;
-  color: #B6F6FF;
+  color: #b6f6ff;
   font-family: Poppins;
 }
-app-board{
-  position:absolute;
+app-board {
+  position: absolute;
   margin-left: 40px;
   margin-top: 126px;
 }
-span{
+span {
   //font-family: poppins;
   color: #296399;
   line-height: 72px;
   font-weight: 700;
   font-size: 48px;
   margin-top: 30px;
-  margin-left:40px;
+  margin-left: 40px;
   text-align: center;
-
 }

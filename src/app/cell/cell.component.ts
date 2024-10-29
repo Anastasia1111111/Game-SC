@@ -1,21 +1,10 @@
-import { Component, Input, HostBinding, inject } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { GameService } from '../game.service';
-import { MatButtonModule } from '@angular/material/button';
-import {
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import { PopUpWinnerComponent } from '../pop-up-winner/pop-up-winner.component';
-import { PopUpLoseComponent } from '../pop-up-lose/pop-up-lose.component';
 
 @Component({
   selector: 'app-cell',
   standalone: true,
-  imports: [MatButtonModule, PopUpWinnerComponent, PopUpLoseComponent],
+  imports: [],
   templateUrl: './cell.component.html',
   styleUrl: './cell.component.scss',
 })
@@ -35,39 +24,16 @@ export class CellComponent {
       this.gameService.buttonState[this.positionX][this.positionY] === 1
     );
   }
-
-  readonly dialog = inject(MatDialog);
-
-  openDialogRestartWinner(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string,
-  ): void {
-    this.dialog.open(PopUpWinnerComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
-
-  openDialogRestartLose(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string,
-  ): void {
-    this.dialog.open(PopUpLoseComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+  @HostBinding('class.last') get last() {
+    return this.gameService.checkLastCell(this.positionX, this.positionY);
   }
 
   constructor(private gameService: GameService) {}
   OnButtonClick() {
     this.gameService.selectCell(this.positionX, this.positionY);
     if (this.gameService.historyMoves.length === 100) {
-      this.openDialogRestartWinner('0', '0');
     }
     if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
-      this.openDialogRestartLose('0', '0');
     }
   }
 }
