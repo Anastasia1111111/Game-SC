@@ -1,0 +1,35 @@
+h2{
+    color:#FFBFF5;
+    text-align: center;
+    font-size: 48px;
+    line-height: 72px;
+    font-weight: 800;
+    font-family: Poppins;
+    border: 1px solid #D143B280
+}
+
+// button.no{
+//     display: flex;
+//     position: absolute;
+//     height: 92px;
+//     width: 360px;
+//     margin-left: 466px;
+//     margin-top: 441px;
+//     background: #DD4747;
+// background-blend-mode: overlay;
+// background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+
+// }
+
+mat-dialog-content{
+  color:#FCE7FF !important;
+  font-size: 38px !important;
+  line-height: 56px !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  font-family: Poppins !important;
+}
+.mat-mdc-dialog-surface ::ng-deep{
+  width: 868px;
+  height: 601px;
+}

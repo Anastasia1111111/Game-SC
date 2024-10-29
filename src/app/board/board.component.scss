@@ -2,8 +2,6 @@ div {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  margin-top: 72px;
-  margin-left: 530px;
   border-radius: 20px;
   height: 780px;
   width: 780px;
@@ -12,4 +10,7 @@ div {
   box-shadow: 0px 4px 4px 0px #00000040;
 }
 
+app-cell{
+  margin:auto;
+}
 

@@ -1,12 +1,10 @@
-<h2 mat-dialog-title>RESTART</h2>
+<h2 >RESTART</h2>
 <mat-dialog-content> Are you sure? </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>NO</button>
-  <button
+  <button class = "no"  mat-dialog-close>NO</button>
+  <button class = "yes"
     (click)="OnRestartClick()"
-    mat-button
     mat-dialog-close
-    cdkFocusInitial
   >
     YES
   </button>
