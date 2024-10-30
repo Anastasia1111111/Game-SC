@@ -1,6 +1,12 @@
-import { Component, HostBinding, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { GameService } from '../game.service';
-import { PopUpLoseComponent } from '../pop-up-lose/pop-up-lose.component';
 
 @Component({
   selector: 'app-cell',
@@ -12,7 +18,8 @@ import { PopUpLoseComponent } from '../pop-up-lose/pop-up-lose.component';
 export class CellComponent {
   @Input() positionX!: number;
   @Input() positionY!: number;
-  @ViewChild("dialog", {static: true}) public test: any;
+  @Output() selectCell = new EventEmitter();
+  @ViewChild('dialog', { static: true }) public test: any;
   @HostBinding('class.selected') get selected() {
     return this.gameService.buttonState[this.positionX][this.positionY] === 1;
   }
@@ -32,11 +39,11 @@ export class CellComponent {
 
   constructor(private gameService: GameService) {}
   OnButtonClick() {
-    this.gameService.selectCell(this.positionX, this.positionY);
-    if (this.gameService.historyMoves.length === 100) {
-    }
-    if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
-      this.test.nativeElement.showModal();
-    }
+    this.selectCell.emit();
+    // if (this.gameService.historyMoves.length === 100) {
+    // }
+    // if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
+    //   this.test.nativeElement.showModal();
+    // }
   }
 }

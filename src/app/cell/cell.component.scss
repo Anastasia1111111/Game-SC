@@ -10,6 +10,9 @@ button {
   height: 64px;
   width: 64px;
   padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 :host(.selected) button > div {
@@ -28,6 +31,18 @@ button {
   width: 24px;
   border-radius: 50%;
   background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+}
+
+:host(.possible) button {
+  background: rgb(175, 164, 164);
+  &:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      180deg,
+      #ffffff -31.99%,
+      rgba(255, 255, 255, 0) 113.98%
+    );
+  }
 }
 
 :host(.disabled) > button {

@@ -1,8 +1,33 @@
-<div>
-  <span>10x10</span>
-  <button class="stepBack" (click)="OnStepBackClick()">STEP BACK</button>
-  <app-pop-up-restart></app-pop-up-restart>
+<div class="game-field">
+  <div class="game-field-header">
+    <span>10x10</span>
+    <div>
+      <button class="step-back" (click)="OnStepBackClick()">STEP BACK</button>
+      <!-- <button class="restart" (click)="dialog.showModal()"><span>RESTART</span></button> -->
+      <button class="restart" (click)="dialog.showModal()">
+        <span>RESTART</span>
+      </button>
+    </div>
+  </div>
+
   <app-board></app-board>
 </div>
-<app-pop-up-lose></app-pop-up-lose>
-<app-pop-up-winner></app-pop-up-winner>
+
+<dialog #dialog>
+  <div>
+    <header>
+      <span>RESTART</span>
+      <img (click)="dialog.close()" src="../../assets/close.svg" />
+    </header>
+    <div>
+      <p class="question">Are you sure?</p>
+      <div class="flex">
+        <button class="confirm" (click)="dialog.close(); OnRestartClick()">
+          <span>YES</span>
+        </button>
+        <button class="cencel" (click)="dialog.close()"><span>NO</span></button>
+      </div>
+    </div>
+    <footer></footer>
+  </div>
+</dialog>
