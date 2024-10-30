@@ -4,13 +4,13 @@ dialog {
   border-radius: 33px;
   background: #4f2b87;
   padding: 0;
+  border: none;
 }
 
 .restart {
   width: 192px;
   height: 48px;
   border-radius: 12px;
-
   background: #f96e03;
   opacity: 80%;
   font-size: 16px;
@@ -33,8 +33,9 @@ header {
 }
 
 header > span {
-  position: relative;
-  margin: auto;
+  position: absolute;
+  margin-left: 321px;
+  margin-top: 21px;
   font-size: 48px;
   font-weight: 800;
   line-height: 72px;
@@ -44,4 +45,86 @@ header > span {
   background-clip: text;
   background-image: linear-gradient(0deg, #ffbff5, #ffbff5),
     linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+img{
+  position:absolute;
+  margin-left: 787px;
+  margin-top: 32px;
+  height: 48px;
+  width: 48px;
+}
+
+div > span{
+  position:absolute;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 56px;
+  color: #FCE7FF;
+  margin-top: 142px;
+  margin-left: 320px;
+}
+
+footer{
+  position: absolute;
+  height: 36px;
+  width: 868px;
+  background: linear-gradient(
+    360deg,
+    rgba(79, 43, 135, 1) 2%,
+    rgba(123, 64, 172, 1) 66%
+  );
+  margin-top: 444px;
+}
+
+.yes{
+  display: flex;
+  position:absolute;
+  margin-top: 325px;
+  margin-left: 82px;
+  padding: 0;
+  width: 360px;
+  height: 98px;
+  border-radius: 21px;
+  background: linear-gradient(0deg, rgba(135,173,246,1) 0%, rgba(38,93,199,1) 50%, rgba(135,173,246,1) 100%);
+}
+
+.yes > span{
+  position:absolute;
+  margin-top: 17px;
+  margin-left: 144px;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 56px;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(0deg, #B6F6FF, #B6F6FF),
+  linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.no{
+  display: flex;
+  position:absolute;
+  margin-top: 325px;
+  margin-left: 466px;
+  padding: 0;
+  width: 360px;
+  height: 98px;
+  border-radius: 21px;
+  background: linear-gradient(0deg, rgba(255,143,143,1) 0%, rgba(221,71,71,1) 50%, rgba(255,143,143,1) 100%);
+}
+
+.no > span{
+  position:absolute;
+  margin-top: 17px;
+  margin-left: 150px;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 56px;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(0deg, #B6F6FF, #B6F6FF),
+  linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
 }

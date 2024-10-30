@@ -1,12 +1,12 @@
 <dialog #dialog>
   <header>
     <span>RESTART</span>
-    <img src="../../assets/close.svg" />
+    <img (click)="dialog.close()" src="../../assets/close.svg" />
   </header>
   <div>
     <span>Are you sure?</span>
-    <button (click)="OnRestartClick()" (click)="dialog.close()">YES</button>
-    <button (click)="OnRestartClick()" (click)="dialog.close()">NO</button>
+    <button class = "yes" (click)="OnRestartClick()" (click)="dialog.close()"><span>YES</span></button>
+    <button class = "no" (click)="dialog.close()"><span>NO</span></button>
   </div>
   <footer></footer>
 </dialog>

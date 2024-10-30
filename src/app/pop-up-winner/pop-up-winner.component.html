@@ -1,1 +1,14 @@
-<p>pop-up-winner works!</p>
+<dialog #dialog>
+    <header>
+      <span>CONGRATS!</span>
+      <img class = "cross" (click)="dialog.close()" src="../../assets/close.svg" />
+    </header>
+    <div>
+        <img class = "happy" src = "../../assets/happy.svg">
+      <span>You are WINNER!</span>
+      <button class = "yes" (click)="OnRestartClick()" (click)="dialog.close()"><span>RESTART</span></button>
+    </div>
+    <footer></footer>
+  </dialog>
+  
+  <button class="restart" (click)="dialog.showModal()">RESTART</button>

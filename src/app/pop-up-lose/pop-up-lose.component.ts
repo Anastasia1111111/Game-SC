@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-pop-up-lose',
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './pop-up-lose.component.scss'
 })
 export class PopUpLoseComponent {
-
+  constructor(private gameService: GameService) {}
+  OnRestartClick() {
+    this.gameService.Restart();
+  }
 }
