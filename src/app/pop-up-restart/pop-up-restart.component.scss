@@ -8,20 +8,25 @@ dialog {
 }
 
 .restart {
+  display: flex;
+  border: none;
   width: 192px;
   height: 48px;
   border-radius: 12px;
-  background: #f96e03;
-  opacity: 80%;
+  background: linear-gradient(0deg, rgba(255,169,103,1) 0%, rgba(249,110,3,1) 50%, rgba(255,169,103,1) 100%);
+  
+}
+.restart > span{
   font-size: 16px;
   font-weight: 800;
   line-height: 24px;
-  text-align: center;
+  margin: auto;
   color: #ffeed8;
   font-family: Poppins;
 }
 
 header {
+  display: flex;
   background: linear-gradient(
     180deg,
     rgba(79, 43, 135, 1) 29%,
@@ -33,15 +38,11 @@ header {
 }
 
 header > span {
-  position: absolute;
-  margin-left: 321px;
-  margin-top: 21px;
+  margin:auto;
   font-size: 48px;
   font-weight: 800;
   line-height: 72px;
-  margin-top: 21px;
   color: transparent;
-  -webkit-background-clip: text;
   background-clip: text;
   background-image: linear-gradient(0deg, #ffbff5, #ffbff5),
     linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
@@ -54,7 +55,6 @@ img{
   height: 48px;
   width: 48px;
 }
-
 div > span{
   position:absolute;
   font-size: 38px;
@@ -66,7 +66,7 @@ div > span{
 }
 
 footer{
-  position: absolute;
+  display:flex;
   height: 36px;
   width: 868px;
   background: linear-gradient(
@@ -83,6 +83,7 @@ footer{
   margin-top: 325px;
   margin-left: 82px;
   padding: 0;
+  border:none;
   width: 360px;
   height: 98px;
   border-radius: 21px;
@@ -97,7 +98,6 @@ footer{
   font-weight: 800;
   line-height: 56px;
   color: transparent;
-  -webkit-background-clip: text;
   background-clip: text;
   background-image: linear-gradient(0deg, #B6F6FF, #B6F6FF),
   linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
@@ -106,6 +106,7 @@ footer{
 .no{
   display: flex;
   position:absolute;
+  border: none;
   margin-top: 325px;
   margin-left: 466px;
   padding: 0;
@@ -123,7 +124,6 @@ footer{
   font-weight: 800;
   line-height: 56px;
   color: transparent;
-  -webkit-background-clip: text;
   background-clip: text;
   background-image: linear-gradient(0deg, #B6F6FF, #B6F6FF),
   linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);

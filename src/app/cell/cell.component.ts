@@ -1,5 +1,6 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input, ViewChild } from '@angular/core';
 import { GameService } from '../game.service';
+import { PopUpLoseComponent } from '../pop-up-lose/pop-up-lose.component';
 
 @Component({
   selector: 'app-cell',
@@ -11,6 +12,7 @@ import { GameService } from '../game.service';
 export class CellComponent {
   @Input() positionX!: number;
   @Input() positionY!: number;
+  @ViewChild("dialog", {static: true}) public test: any;
   @HostBinding('class.selected') get selected() {
     return this.gameService.buttonState[this.positionX][this.positionY] === 1;
   }
@@ -34,6 +36,7 @@ export class CellComponent {
     if (this.gameService.historyMoves.length === 100) {
     }
     if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
+      this.test.nativeElement.showModal();
     }
   }
 }
