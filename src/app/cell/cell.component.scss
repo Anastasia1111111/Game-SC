@@ -22,6 +22,13 @@ button {
   width: 38px;
   border-radius: 50%;
   background: linear-gradient(220.53deg, #b2f763 0%, #26ab3f 76.95%);
+  > p {
+    font-size: 16px;
+    font-weight: 700;
+    color: red;
+    margin: auto;
+    line-height: 24px;
+  }
 }
 
 :host(.possible) button > div {
@@ -57,4 +64,15 @@ button {
   width: 48px;
   border-radius: 50%;
   background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+  > p {
+    font-size: 18px;
+    font-weight: 700;
+    color: blue;
+    margin: auto;
+    line-height: 27px;
+  }
+}
+
+.number {
+  font-size: 0px;
 }

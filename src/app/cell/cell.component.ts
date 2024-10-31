@@ -18,6 +18,7 @@ import { GameService } from '../game.service';
 export class CellComponent {
   @Input() positionX!: number;
   @Input() positionY!: number;
+  numberPosition!: number;
   @Output() selectCell = new EventEmitter();
   @ViewChild('dialog', { static: true }) public test: any;
   @HostBinding('class.selected') get selected() {
@@ -40,10 +41,6 @@ export class CellComponent {
   constructor(private gameService: GameService) {}
   OnButtonClick() {
     this.selectCell.emit();
-    // if (this.gameService.historyMoves.length === 100) {
-    // }
-    // if (!this.gameService.checkPossibleMoves(this.positionX, this.positionY)) {
-    //   this.test.nativeElement.showModal();
-    // }
+    this.numberPosition = this.gameService.historyMoves.length;
   }
 }
