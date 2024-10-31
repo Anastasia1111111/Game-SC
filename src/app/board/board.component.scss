@@ -53,6 +53,10 @@ header {
   width: 48px;
   display: block;
   margin-right: 20px;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }
 footer {
   height: 36px;
