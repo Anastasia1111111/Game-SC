@@ -16,7 +16,7 @@ import { GameService } from '../game.service';
 })
 export class BoardComponent {
   @ViewChild('loseDialog', { static: true }) public loseDialog?: ElementRef;
-  @ViewChild('WinnerDialog', { static: true }) public WinnerDialog?: ElementRef;
+  @ViewChild('winnerDialog', { static: true }) public winnerDialog?: ElementRef;
 
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
@@ -26,7 +26,7 @@ export class BoardComponent {
   public selectCell(positionX: number, positionY: number) {
     this.gameService.selectCell(positionX, positionY);
     if (this.gameService.historyMoves.length === 100) {
-      this.WinnerDialog?.nativeElement.showModal();
+      this.winnerDialog?.nativeElement.showModal();
       return;
     }
     if (!this.gameService.checkPossibleMoves(positionX, positionY)) {
@@ -34,7 +34,7 @@ export class BoardComponent {
     }
   }
 
-  OnRestartClick() {
-    this.gameService.Restart();
+  onRestartClick() {
+    this.gameService.restart();
   }
 }

@@ -39,7 +39,7 @@ export class CellComponent {
   }
 
   constructor(private gameService: GameService) {}
-  OnButtonClick() {
+  onButtonClick() {
     this.selectCell.emit();
     this.numberPosition = this.gameService.historyMoves.length;
   }

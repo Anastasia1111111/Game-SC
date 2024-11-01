@@ -23,7 +23,7 @@
     <div>
       <img class="sad" src="../../assets/sad.svg" />
       <p class="message">You lose!</p>
-      <button class="confirm" (click)="loseDialog.close(); OnRestartClick()">
+      <button class="confirm" (click)="loseDialog.close(); onRestartClick()">
         <span>TRY AGAIN</span>
       </button>
     </div>
@@ -31,20 +31,20 @@
   </div>
 </dialog>
 
-<dialog #WinnerDialog>
+<dialog #winnerDialog>
   <div>
     <header>
       <span>CONGRATS!</span>
       <img
         class="cross"
-        (click)="WinnerDialog.close()"
+        (click)="winnerDialog.close()"
         src="../../assets/close.svg"
       />
     </header>
     <div>
       <img class="happy" src="../../assets/happy.svg" />
       <p class="message">You are WINNER!</p>
-      <button class="confirm" (click)="WinnerDialog.close(); OnRestartClick()">
+      <button class="confirm" (click)="winnerDialog.close(); onRestartClick()">
         <span>RESTART</span>
       </button>
     </div>

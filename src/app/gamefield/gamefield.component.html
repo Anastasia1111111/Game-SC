@@ -2,8 +2,7 @@
   <div class="game-field-header">
     <span>10x10</span>
     <div>
-      <button class="step-back" (click)="OnStepBackClick()">STEP BACK</button>
-      <!-- <button class="restart" (click)="dialog.showModal()"><span>RESTART</span></button> -->
+      <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
       <button class="restart" (click)="dialog.showModal()">
         <span>RESTART</span>
       </button>
@@ -22,7 +21,7 @@
     <div>
       <p class="question">Are you sure?</p>
       <div class="flex">
-        <button class="confirm" (click)="dialog.close(); OnRestartClick()">
+        <button class="confirm" (click)="dialog.close(); onRestartClick()">
           <span>YES</span>
         </button>
         <button class="cencel" (click)="dialog.close()"><span>NO</span></button>

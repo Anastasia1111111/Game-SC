@@ -59,7 +59,7 @@ export class GameService {
     return result;
   }
 
-  Restart() {
+  restart() {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         this.buttonState[i][j] = 0;
@@ -68,7 +68,7 @@ export class GameService {
     this.historyMoves = [];
   }
 
-  StepBack() {
+  stepBack() {
     if (this.historyMoves.length !== 0) {
       let last = this.historyMoves[this.historyMoves.length - 1];
       this.buttonState[last[0]][last[1]] = 0;
@@ -96,5 +96,4 @@ export class GameService {
     );
   }
 
-  constructor() {}
 }

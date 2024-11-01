@@ -14,10 +14,10 @@ export class GamefieldComponent {
 
   constructor(private gameService: GameService) {}
 
-  OnStepBackClick() {
-    this.gameService.StepBack();
+  onStepBackClick() {
+    this.gameService.stepBack();
   }
-  OnRestartClick() {
-    this.gameService.Restart();
+  onRestartClick() {
+    this.gameService.restart();
   }
 }
