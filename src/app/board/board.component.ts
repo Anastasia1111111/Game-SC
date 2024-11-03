@@ -1,9 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { CellComponent } from '../cell/cell.component';
 import { NgClass } from '@angular/common';
 import { GameService } from '../game.service';
@@ -15,8 +10,8 @@ import { GameService } from '../game.service';
   styleUrl: './board.component.scss',
 })
 export class BoardComponent {
-  @ViewChild('loseDialog', { static: true }) public loseDialog?: ElementRef;
-  @ViewChild('winnerDialog', { static: true }) public winnerDialog?: ElementRef;
+  loseDialog = viewChild<ElementRef>('loseDialog');
+  winnerDialog = viewChild<ElementRef>('winnerDialog');
 
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
@@ -26,11 +21,11 @@ export class BoardComponent {
   public selectCell(positionX: number, positionY: number) {
     this.gameService.selectCell(positionX, positionY);
     if (this.gameService.historyMoves.length === 100) {
-      this.winnerDialog?.nativeElement.showModal();
+      this.winnerDialog()?.nativeElement.showModal();
       return;
     }
     if (!this.gameService.checkPossibleMoves(positionX, positionY)) {
-      this.loseDialog?.nativeElement.showModal();
+      this.loseDialog()?.nativeElement.showModal();
     }
   }
 

@@ -10,8 +10,6 @@ import { GameService } from '../game.service';
   styleUrl: './gamefield.component.scss',
 })
 export class GamefieldComponent {
-  @ViewChild('dialog', { static: true }) public dialog?: ElementRef;
-
   constructor(private gameService: GameService) {}
 
   onStepBackClick() {
