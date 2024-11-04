@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
 
@@ -8,6 +8,7 @@ import { GameService } from '../game.service';
   imports: [BoardComponent],
   templateUrl: './gamefield.component.html',
   styleUrl: './gamefield.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamefieldComponent {
   constructor(private gameService: GameService) {}

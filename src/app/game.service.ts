@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,19 @@ export class GameService {
     [1, -2],
     [2, -1],
   ];
-  buttonState = [
+  // buttonState = [
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  // ];
+  buttonState: WritableSignal<number[][]> = signal([
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,12 +37,11 @@ export class GameService {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ];
-
+  ]);
   historyMoves: number[][] = [];
 
   selectCell(positionX: number, positionY: number) {
-    this.buttonState[positionX][positionY] = 1;
+    this.buttonState()[positionX][positionY] = 1;
     this.historyMoves.push([positionX, positionY]);
   }
 
@@ -49,7 +60,7 @@ export class GameService {
           if (
             possiblePositionX === positionX &&
             possiblePositionY === positionY &&
-            !this.buttonState[possiblePositionX][possiblePositionY]
+            !this.buttonState()[possiblePositionX][possiblePositionY]
           ) {
             result = true;
           }
@@ -62,7 +73,7 @@ export class GameService {
   restart() {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
-        this.buttonState[i][j] = 0;
+        this.buttonState()[i][j] = 0;
       }
     }
     this.historyMoves = [];
@@ -71,7 +82,7 @@ export class GameService {
   stepBack() {
     if (this.historyMoves.length !== 0) {
       let last = this.historyMoves[this.historyMoves.length - 1];
-      this.buttonState[last[0]][last[1]] = 0;
+      this.buttonState()[last[0]][last[1]] = 0;
       this.historyMoves.pop();
     }
   }
@@ -82,7 +93,7 @@ export class GameService {
       let possiblePositionY = positionY + knightPosition[1];
       return (
         this.isMoveValid(possiblePositionX, possiblePositionY) &&
-        this.buttonState[possiblePositionX][possiblePositionY] === 0
+        this.buttonState()[possiblePositionX][possiblePositionY] === 0
       );
     });
   }
@@ -90,7 +101,7 @@ export class GameService {
   checkLastCell(positionX: number, positionY: number) {
     let last = this.historyMoves[this.historyMoves.length - 1];
     return (
-      this.buttonState[positionX][positionY] === 1 &&
+      this.buttonState()[positionX][positionY] === 1 &&
       last[0] === positionX &&
       last[1] === positionY
     );

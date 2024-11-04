@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, viewChild } from '@angular/core';
 import { CellComponent } from '../cell/cell.component';
 import { NgClass } from '@angular/common';
 import { GameService } from '../game.service';
@@ -8,6 +8,7 @@ import { GameService } from '../game.service';
   imports: [CellComponent, NgClass],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardComponent {
   loseDialog = viewChild<ElementRef>('loseDialog');
@@ -27,9 +28,11 @@ export class BoardComponent {
     if (!this.gameService.checkPossibleMoves(positionX, positionY)) {
       this.loseDialog()?.nativeElement.showModal();
     }
+    this.gameService.buttonState
   }
 
   onRestartClick() {
     this.gameService.restart();
   }
+
 }

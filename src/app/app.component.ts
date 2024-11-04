@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GamefieldComponent } from './gamefield/gamefield.component';
 import { BoardComponent } from './board/board.component';
@@ -9,6 +9,7 @@ import { BoardComponent } from './board/board.component';
   imports: [RouterOutlet, GamefieldComponent, BoardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   title = 'Game';
