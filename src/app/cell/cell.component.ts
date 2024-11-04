@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, HostBinding, Injector, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  input,
+  output,
+} from '@angular/core';
 import { GameService } from '../game.service';
 
 @Component({
@@ -36,19 +42,10 @@ export class CellComponent {
     return this.gameService.checkLastCell(this.positionX(), this.positionY());
   }
 
-  constructor(private gameService: GameService, private changeDetection: ChangeDetectorRef, private injector: Injector) {}
+  constructor(private gameService: GameService) {}
+
   onButtonClick() {
     this.selectCell.emit();
     this.numberPosition = this.gameService.historyMoves.length;
-    console.log(this.gameService.buttonState());
   }
-  initializeLogging(): void {
-    effect(
-        () => {
-            console.log(this.gameService.buttonState());
-        },
-        { injector: this.injector },
-        
-    );
-}
 }
