@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GamefieldComponent } from './gamefield/gamefield.component';
 import { BoardComponent } from './board/board.component';
+import { GameService } from './game.service';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,6 @@ import { BoardComponent } from './board/board.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  constructor(private gameService: GameService){}
   title = 'Game';
 }
