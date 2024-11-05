@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
+  input,
   viewChild,
 } from '@angular/core';
 import { CellComponent } from '../cell/cell.component';
@@ -21,9 +23,10 @@ export class BoardComponent {
 
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
-
-  public constructor(private gameService: GameService) {}
-
+  public constructor(
+    private gameService: GameService,
+    public changeDetectorRef: ChangeDetectorRef,
+  ) {}
   public selectCell(positionX: number, positionY: number) {
     this.gameService.selectCell(positionX, positionY);
     if (this.gameService.historyMoves.length === 100) {
@@ -33,7 +36,6 @@ export class BoardComponent {
     if (!this.gameService.checkPossibleMoves(positionX, positionY)) {
       this.loseDialog()?.nativeElement.showModal();
     }
-    this.gameService.buttonState;
   }
 
   onRestartClick() {

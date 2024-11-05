@@ -22,7 +22,7 @@ export class CellComponent {
   selectCell = output();
   @HostBinding('class.selected') get selected() {
     return (
-      this.gameService.buttonState()[this.positionX()][this.positionY()] === 1
+      this.gameService.buttonState[this.positionX()][this.positionY()] === 1
     );
   }
   @HostBinding('class.possible') get possible() {
@@ -35,7 +35,7 @@ export class CellComponent {
     return (
       (!this.gameService.isCellSelectable(this.positionX(), this.positionY()) &&
         this.gameService.historyMoves.length !== 0) ||
-      this.gameService.buttonState()[this.positionX()][this.positionY()] === 1
+      this.gameService.buttonState[this.positionX()][this.positionY()] === 1
     );
   }
   @HostBinding('class.last') get last() {
