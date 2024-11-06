@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   HostBinding,
   input,
   output,
+  SimpleChanges,
 } from '@angular/core';
 import { GameService } from '../game.service';
 
@@ -18,11 +20,14 @@ import { GameService } from '../game.service';
 export class CellComponent {
   positionX = input.required<number>();
   positionY = input.required<number>();
-  numberPosition!: number;
+  buttonState = input.required<number>();
+  //numberPosition!: number;
+  //historyMoves = input.required<number[][]>();
+  numberPosition = input.required<number>();
   selectCell = output();
   @HostBinding('class.selected') get selected() {
     return (
-      this.gameService.buttonState[this.positionX()][this.positionY()] === 1
+      this.buttonState() === 1
     );
   }
   @HostBinding('class.possible') get possible() {
@@ -35,7 +40,7 @@ export class CellComponent {
     return (
       (!this.gameService.isCellSelectable(this.positionX(), this.positionY()) &&
         this.gameService.historyMoves.length !== 0) ||
-      this.gameService.buttonState[this.positionX()][this.positionY()] === 1
+        this.buttonState() === 1
     );
   }
   @HostBinding('class.last') get last() {
@@ -46,6 +51,7 @@ export class CellComponent {
 
   onButtonClick() {
     this.selectCell.emit();
-    this.numberPosition = this.gameService.historyMoves.length;
+    //this.numberPosition = this.historyMoves().length;
   }
+  
 }

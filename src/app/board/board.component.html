@@ -2,9 +2,12 @@
   @for (buttonX of buttonsX; track $index; let idx = $index) {
     @for (buttonY of buttonsY; track $index; let idy = $index) {
       <app-cell
+        
         [positionX]="idx"
         [positionY]="idy"
         (selectCell)="selectCell(idx, idy)"
+        [buttonState] = "buttonState()[idx][idy]"
+        [numberPosition] = "numberPosition"
       ></app-cell>
     }
   }

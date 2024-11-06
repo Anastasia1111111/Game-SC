@@ -4,15 +4,15 @@ import {
   Component,
   ElementRef,
   input,
+  output,
   viewChild,
 } from '@angular/core';
 import { CellComponent } from '../cell/cell.component';
-import { NgClass } from '@angular/common';
 import { GameService } from '../game.service';
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CellComponent, NgClass],
+  imports: [CellComponent],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,16 +20,20 @@ import { GameService } from '../game.service';
 export class BoardComponent {
   loseDialog = viewChild<ElementRef>('loseDialog');
   winnerDialog = viewChild<ElementRef>('winnerDialog');
-
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
+  buttonState = input.required<number[][]>();
+  historyMoves = input.required<number[][]>();
+  restart = output();
+  numberPosition!: number;
   public constructor(
-    private gameService: GameService,
-    public changeDetectorRef: ChangeDetectorRef,
+    public gameService: GameService,
+    private changeDetectorRef: ChangeDetectorRef,
   ) {}
-  public selectCell(positionX: number, positionY: number) {
+  selectCell(positionX: number, positionY: number) {
     this.gameService.selectCell(positionX, positionY);
-    if (this.gameService.historyMoves.length === 100) {
+    this.numberPosition = this.historyMoves().length;
+    if (this.historyMoves().length === 100) {
       this.winnerDialog()?.nativeElement.showModal();
       return;
     }
@@ -39,6 +43,14 @@ export class BoardComponent {
   }
 
   onRestartClick() {
-    this.gameService.restart();
+    this.restart.emit();
   }
+  
+  ngDoCheck(){
+      this.changeDetectorRef.detectChanges();
+    }
+
+    public isCellSelectable(positionX: number, positionY: number){
+      this.gameService.isCellSelectable(positionX, positionY);
+    }
 }

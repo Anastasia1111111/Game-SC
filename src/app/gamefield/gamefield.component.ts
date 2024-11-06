@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
+  SimpleChanges,
   viewChild,
   ViewChild,
 } from '@angular/core';
@@ -17,14 +19,11 @@ import { GameService } from '../game.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamefieldComponent {
-  board = viewChild(BoardComponent);
-  constructor(private gameService: GameService) {}
+  constructor(public gameService: GameService) {}
   onStepBackClick() {
     this.gameService.stepBack();
-    this.board()?.changeDetectorRef.detectChanges();
   }
   onRestartClick() {
     this.gameService.restart();
-    this.board()?.changeDetectorRef.detectChanges();
   }
 }

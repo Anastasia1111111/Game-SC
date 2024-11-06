@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <app-board></app-board>
+  <app-board [buttonState] = "gameService.buttonState" [historyMoves] = "gameService.historyMoves" (restart)="onRestartClick()" ></app-board>
 </div>
 
 <dialog #dialog>
@@ -30,3 +30,4 @@
     <footer></footer>
   </div>
 </dialog>
+
