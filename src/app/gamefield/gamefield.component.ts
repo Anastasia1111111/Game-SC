@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  viewChild,
+  ViewChild,
+} from '@angular/core';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
 
