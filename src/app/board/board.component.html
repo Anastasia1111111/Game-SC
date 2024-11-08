@@ -2,8 +2,11 @@
   @for (buttonX of buttonsX; track $index; let idx = $index) {
     @for (buttonY of buttonsY; track $index; let idy = $index) {
       <app-cell
-        [positionX]="idx"
-        [positionY]="idy"
+        [buttonState]="buttonState()[idx][idy]"
+        [historyMoves]="historyMoves()"
+        [class.possible]="isCellSelectable(idx, idy)"
+        [class.disabled]="isDisabled(idx, idy)"
+        [class.last]="checkLastCell(idx, idy)"
         (selectCell)="selectCell(idx, idy)"
       ></app-cell>
     }

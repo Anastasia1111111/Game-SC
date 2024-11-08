@@ -9,7 +9,14 @@
     </div>
   </div>
 
-  <app-board></app-board>
+  <app-board
+    [buttonState]="gameService.buttonState"
+    [historyMoves]="gameService.historyMoves"
+    [knightPositions]="gameService.knightPositions"
+    (restart)="onRestartClick()"
+    (selectSellEmitter)="onSelectCell($event)"
+  >
+  </app-board>
 </div>
 
 <dialog #dialog>

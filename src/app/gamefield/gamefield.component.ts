@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
 
@@ -11,15 +11,16 @@ import { GameService } from '../game.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamefieldComponent {
-  constructor() {
-  }
-  stepBack = input();
-  restart = input();
+  constructor(public gameService: GameService) {}
 
   onStepBackClick() {
-    //this.gameService.stepBack();
+    this.gameService.stepBack();
   }
   onRestartClick() {
-    //this.gameService.restart();
+    this.gameService.restart();
+  }
+
+  onSelectCell(data: { positionX: number; positionY: number }) {
+    this.gameService.selectCell(data.positionX, data.positionY);
   }
 }
