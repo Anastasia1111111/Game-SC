@@ -1,14 +1,14 @@
 <div class="board">
   @for (buttonX of buttonsX; track $index; let idx = $index) {
     @for (buttonY of buttonsY; track $index; let idy = $index) {
-      <button
+      <button 
         [class.selected]="isSelected(idx,idy)"
         [class.possible]="isCellSelectable(idx, idy)"
         [class.disabled]="isDisabled(idx, idy)"
         [class.last]="checkLastCell(idx, idy)"
         (click)="selectCell(idx,idy)">
         <div>
-          <p class="number">{{ numberPosition }}</p>
+          <p class="number">{{ numberPosition + 1}}</p>
         </div>
       </button>
     }

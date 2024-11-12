@@ -18,3 +18,35 @@
   margin-left: 63vw;
   margin-top: 75vh;
 }
+
+app-gamefield{
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 72px;
+  padding: 40px 40px;
+  width: 780px;
+  border-radius: 25px;
+  border-image-source: radial-gradient(
+      0% 50% at 50% 50%,
+      #0f0f0f 0%,
+      rgba(21, 21, 21, 0) 100%
+    ),
+    radial-gradient(
+      198.89% 50% at 50% 50%,
+      #0a7abf 0%,
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    radial-gradient(
+      170.42% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  background: linear-gradient(
+    111.49deg,
+    rgba(255, 255, 255, 0.4) -8.95%,
+    rgba(255, 255, 255, 0.01) 114%
+  );
+  backdrop-filter: blur(100px);
+}

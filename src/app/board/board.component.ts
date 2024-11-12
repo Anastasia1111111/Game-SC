@@ -19,7 +19,7 @@ export class BoardComponent {
   knightPositions = input.required<number[][]>();
   restart = output();
   selectSellEmitter = output<{ positionX: number; positionY: number }>();
-  numberPosition?: number;
+  numberPosition: number = 0;
   winnerDialog = output();
   loseDialog = output();
   buttonsX = Array(10).fill(0);
