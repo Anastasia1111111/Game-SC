@@ -13,5 +13,6 @@ import { GameService } from './game.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  constructor(private gameService: GameService){}
   title = 'Game';
 }

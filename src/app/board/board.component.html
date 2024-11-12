@@ -1,56 +1,16 @@
 <div class="board">
   @for (buttonX of buttonsX; track $index; let idx = $index) {
     @for (buttonY of buttonsY; track $index; let idy = $index) {
-      <app-cell
-        
-        [positionX]="idx"
-        [positionY]="idy"
-        (selectCell)="selectCell(idx, idy)"
-        [buttonState] = "buttonState()[idx][idy]"
-        [numberPosition] = "numberPosition"
-      ></app-cell>
+      <button
+        [class.selected]="isSelected(idx,idy)"
+        [class.possible]="isCellSelectable(idx, idy)"
+        [class.disabled]="isDisabled(idx, idy)"
+        [class.last]="checkLastCell(idx, idy)"
+        (click)="selectCell(idx,idy)">
+        <div>
+          <p class="number">{{ numberPosition }}</p>
+        </div>
+      </button>
     }
   }
 </div>
-
-<dialog #loseDialog>
-  <div>
-    <header>
-      <span>SORRY!</span>
-      <img
-        class="cross"
-        (click)="loseDialog.close()"
-        src="../../assets/close.svg"
-      />
-    </header>
-    <div>
-      <img class="sad" src="../../assets/sad.svg" />
-      <p class="message">You lose!</p>
-      <button class="confirm" (click)="loseDialog.close(); onRestartClick()">
-        <span>TRY AGAIN</span>
-      </button>
-    </div>
-    <footer></footer>
-  </div>
-</dialog>
-
-<dialog #winnerDialog>
-  <div>
-    <header>
-      <span>CONGRATS!</span>
-      <img
-        class="cross"
-        (click)="winnerDialog.close()"
-        src="../../assets/close.svg"
-      />
-    </header>
-    <div>
-      <img class="happy" src="../../assets/happy.svg" />
-      <p class="message">You are WINNER!</p>
-      <button class="confirm" (click)="winnerDialog.close(); onRestartClick()">
-        <span>RESTART</span>
-      </button>
-    </div>
-    <footer></footer>
-  </div>
-</dialog>

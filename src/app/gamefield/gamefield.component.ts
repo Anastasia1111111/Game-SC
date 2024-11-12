@@ -1,11 +1,8 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
-  SimpleChanges,
   viewChild,
-  ViewChild,
 } from '@angular/core';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
@@ -19,11 +16,25 @@ import { GameService } from '../game.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamefieldComponent {
+  public loseDialog = viewChild<ElementRef>('loseDialog');
+  public winnerDialog = viewChild<ElementRef>('winnerDialog');
   constructor(public gameService: GameService) {}
+
+  losePopUp(){
+    this.loseDialog()?.nativeElement.showModal();
+  }
+
+  winnerPopUp(){
+    this.winnerDialog()?.nativeElement.showModal();
+  }
   onStepBackClick() {
     this.gameService.stepBack();
   }
   onRestartClick() {
     this.gameService.restart();
+  }
+
+  onSelectCell(data: { positionX: number; positionY: number }) {
+    this.gameService.selectCell(data.positionX, data.positionY);
   }
 }

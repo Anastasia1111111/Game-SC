@@ -9,12 +9,21 @@
     </div>
   </div>
 
-  <app-board [buttonState] = "gameService.buttonState" [historyMoves] = "gameService.historyMoves" (restart)="onRestartClick()" ></app-board>
+  <app-board
+    [buttonState]="gameService.buttonState"
+    [historyMoves]="gameService.historyMoves"
+    [knightPositions]="gameService.knightPositions"
+    (restart)="onRestartClick()"
+    (selectSellEmitter)="onSelectCell($event)"
+    (loseDialog)="losePopUp()"
+    (winnerDialog)="winnerPopUp()"
+  >
+  </app-board>
 </div>
 
 <dialog #dialog>
   <div>
-    <header>
+    <header class="restart-button">
       <span>RESTART</span>
       <img (click)="dialog.close()" src="../../assets/close.svg" />
     </header>
@@ -24,10 +33,51 @@
         <button class="confirm" (click)="dialog.close(); onRestartClick()">
           <span>YES</span>
         </button>
-        <button class="cencel" (click)="dialog.close()"><span>NO</span></button>
+        <button class="cancel" (click)="dialog.close()"><span>NO</span></button>
       </div>
     </div>
     <footer></footer>
   </div>
 </dialog>
 
+<dialog #loseDialog>
+  <div>
+    <header>
+      <span>SORRY!</span>
+      <img
+        class="cross"
+        (click)="loseDialog.close()"
+        src="../../assets/close.svg"
+      />
+    </header>
+    <div>
+      <img class="sad" src="../../assets/sad.svg" />
+      <p class="message">You lose!</p>
+      <button class="exit" (click)="loseDialog.close(); onRestartClick()">
+        <span>TRY AGAIN</span>
+      </button>
+    </div>
+    <footer></footer>
+  </div>
+</dialog>
+
+<dialog #winnerDialog>
+  <div>
+    <header>
+      <span>CONGRATS!</span>
+      <img
+        class="cross"
+        (click)="winnerDialog.close()"
+        src="../../assets/close.svg"
+      />
+    </header>
+    <div>
+      <img class="happy" src="../../assets/happy.svg" />
+      <p class="message">You are WINNER!</p>
+      <button class = "exit" (click)="winnerDialog.close(); onRestartClick()">
+        <span>RESTART</span>
+      </button>
+    </div>
+    <footer></footer>
+  </div>
+</dialog>
