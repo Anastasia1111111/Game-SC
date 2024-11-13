@@ -16,8 +16,8 @@ import { GameService } from '../game.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamefieldComponent {
-  public loseDialog = viewChild<ElementRef>('loseDialog');
-  public winnerDialog = viewChild<ElementRef>('winnerDialog');
+  loseDialog = viewChild<ElementRef>('loseDialog');
+  winnerDialog = viewChild<ElementRef>('winnerDialog');
   constructor(public gameService: GameService) {}
 
   losePopUp(){

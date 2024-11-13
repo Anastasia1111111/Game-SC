@@ -15,25 +15,28 @@ import {
 })
 export class BoardComponent {
   buttonState = input.required<number[][]>();
- public historyMoves = input.required<number[][]>();
+  historyMoves = input.required<number[][]>();
   knightPositions = input.required<number[][]>();
   restart = output();
   selectSellEmitter = output<{ positionX: number; positionY: number }>();
-  numberPosition: number = 0;
   winnerDialog = output();
   loseDialog = output();
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
 
-  public constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  public isSelected(positionX: number, positionY: number){
+  numberPosition(positionX:number, positionY:number){
+    return this.historyMoves().findIndex((elem) => {
+      return positionX === elem[0] && positionY === elem[1];
+    })
+  }
+  isSelected(positionX: number, positionY: number){
     return this.buttonState()[positionX][positionY] === 1;
   }
 
-  public selectCell(positionX: number, positionY: number) {
+  selectCell(positionX: number, positionY: number) {
     this.selectSellEmitter.emit({ positionX, positionY });
-    // this.numberPosition = this.historyMoves().length;
     if (this.historyMoves().length === 100) {
       this.winnerDialog.emit();
       return;
