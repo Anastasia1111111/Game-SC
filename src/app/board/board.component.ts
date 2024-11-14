@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -5,10 +6,11 @@ import {
   input,
   output,
 } from '@angular/core';
+import { GameService } from '../game.service';
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,27 +25,24 @@ export class BoardComponent {
   loseDialog = output();
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  
+  constructor(private changeDetectorRef: ChangeDetectorRef, public gameServise: GameService) {}
 
   numberPosition(positionX:number, positionY:number){
     return this.historyMoves().findIndex((elem) => {
       return positionX === elem[0] && positionY === elem[1];
     })
   }
-  isSelected(positionX: number, positionY: number){
-    return this.buttonState()[positionX][positionY] === 1;
-  }
 
   selectCell(positionX: number, positionY: number) {
     this.selectSellEmitter.emit({ positionX, positionY });
-    if (this.historyMoves().length === 100) {
-      this.winnerDialog.emit();
-      return;
-    }
-    if (!this.checkPossibleMoves(positionX, positionY)) {
-      this.loseDialog.emit();
-    }
+    // if (this.historyMoves().length === 100) {
+    //   this.winnerDialog.emit();
+    //   return;
+    // }
+    // if (!this.checkPossibleMoves(positionX, positionY)) {
+    //   this.loseDialog.emit();
+    // }
   }
 
   checkPossibleMoves(positionX: number, positionY: number) {
@@ -59,44 +58,13 @@ export class BoardComponent {
 
   isMoveValid(positionX: number, positionY: number): boolean {
     return positionX >= 0 && positionX < 10 && positionY >= 0 && positionY < 10;
-  }
-
-  isCellSelectable(positionX: number, positionY: number) {
-    let result = false;
-    if (this.historyMoves().length !== 0) {
-      let last = this.historyMoves()[this.historyMoves().length - 1];
-      this.knightPositions().forEach((knightPosition) => {
-        let possiblePositionX = last[0] + knightPosition[0];
-        let possiblePositionY = last[1] + knightPosition[1];
-        if (this.isMoveValid(possiblePositionX, possiblePositionY)) {
-          if (
-            possiblePositionX === positionX &&
-            possiblePositionY === positionY &&
-            !this.buttonState()[possiblePositionX][possiblePositionY]
-          ) {
-            result = true;
-          }
-        }
-      });
-    }
-    return result;
-  }
-
-  isDisabled(positionX: number, positionY: number) {
-    return (
-      (!this.isCellSelectable(positionX, positionY) &&
-        this.historyMoves().length !== 0) ||
-      this.buttonState()[positionX][positionY] === 1
-    );
-  }
-
-  checkLastCell(positionX: number, positionY: number) {
-    let last = this.historyMoves()[this.historyMoves().length - 1];
-    return (
-      this.buttonState()[positionX][positionY] === 1 &&
-      last[0] === positionX &&
-      last[1] === positionY
-    );
+  }  
+  
+  currentClasses={
+    selected: this,
+    possible: false,
+    disabled: false,
+    last:false
   }
 
   onRestartClick() {

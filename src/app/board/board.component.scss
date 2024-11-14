@@ -28,23 +28,21 @@ button {
   }
 }
 
-.selected > div{
+.selected > p{
   display: flex;
   margin: auto;
   height: 38px;
   width: 38px;
   border-radius: 50%;
   background: linear-gradient(220.53deg, #b2f763 0%, #26ab3f 76.95%);
-  > p {
-    font-size: 16px;
-    font-weight: 700;
-    color: red;
-    margin: auto;
-    line-height: 24px;
-  }
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+  margin: auto;
+  line-height: 24px;
 }
 
-.possible > div {
+.possible > p {
   display: flex;
   margin: auto;
   height: 24px;
@@ -69,7 +67,7 @@ button {
   pointer-events: none;
 }
 
-.last> div {
+.last> p {
   display: flex;
   text-align: center;
   margin: auto;
@@ -77,13 +75,11 @@ button {
   width: 48px;
   border-radius: 50%;
   background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
-  > p {
-    font-size: 18px;
-    font-weight: 700;
-    color: blue;
-    margin: auto;
-    line-height: 27px;
-  }
+  font-size: 18px;
+  font-weight: 700;
+  color: blue;
+  margin: auto;
+  line-height: 27px;
 }
 
 .number {
