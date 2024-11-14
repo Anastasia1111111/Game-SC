@@ -1,12 +1,7 @@
-<div class="board">
-  @for (buttonX of buttonsX; track $index; let idx = $index) {
-    @for (buttonY of buttonsY; track $index; let idy = $index) {
-      <button 
-        (click)="selectCell(idx,idy)">
-        
-          <p class="number" >{{numberPosition(idx,idy) + 1}}</p>
-        
-      </button>
-    }
+@for (buttonX of buttonsX; track $index; let idx = $index) {
+  @for (buttonY of buttonsY; track $index; let idy = $index) {
+    <button [ngClass]="checkState(idx, idy)" (click)="selectCell(idx, idy)">
+      <p class="number">{{ numberPosition(idx, idy) + 1 }}</p>
+    </button>
   }
-</div>
+}

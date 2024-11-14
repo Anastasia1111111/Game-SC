@@ -7,6 +7,7 @@ import {
   output,
 } from '@angular/core';
 import { GameService } from '../game.service';
+import { isMoveValid } from '../common';
 @Component({
   selector: 'app-board',
   standalone: true,
@@ -25,24 +26,45 @@ export class BoardComponent {
   loseDialog = output();
   buttonsX = Array(10).fill(0);
   buttonsY = Array(10).fill(0);
-  
-  constructor(private changeDetectorRef: ChangeDetectorRef, public gameServise: GameService) {}
 
-  numberPosition(positionX:number, positionY:number){
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    public gameServise: GameService,
+  ) {}
+
+  numberPosition(positionX: number, positionY: number) {
     return this.historyMoves().findIndex((elem) => {
       return positionX === elem[0] && positionY === elem[1];
-    })
+    });
+  }
+
+  checkState(positionX: number, positionY: number) {
+    let temp = this.buttonState()[positionX][positionY];
+    if (this.historyMoves().length === 0) {
+      return;
+    }
+    switch (this.buttonState()[positionX][positionY]) {
+      case 0:
+        return 'possible';
+      case 1:
+        return 'selected';
+      case 2:
+        return 'disabled';
+      case 3:
+        return 'last';
+    }
+    return;
   }
 
   selectCell(positionX: number, positionY: number) {
     this.selectSellEmitter.emit({ positionX, positionY });
-    // if (this.historyMoves().length === 100) {
-    //   this.winnerDialog.emit();
-    //   return;
-    // }
-    // if (!this.checkPossibleMoves(positionX, positionY)) {
-    //   this.loseDialog.emit();
-    // }
+    if (this.historyMoves().length === 100) {
+      this.winnerDialog.emit();
+      return;
+    }
+    if (!this.checkPossibleMoves(positionX, positionY)) {
+      this.loseDialog.emit();
+    }
   }
 
   checkPossibleMoves(positionX: number, positionY: number) {
@@ -50,21 +72,10 @@ export class BoardComponent {
       let possiblePositionX = positionX + knightPosition[0];
       let possiblePositionY = positionY + knightPosition[1];
       return (
-        this.isMoveValid(possiblePositionX, possiblePositionY) &&
+        isMoveValid(possiblePositionX, possiblePositionY) &&
         this.buttonState()[possiblePositionX][possiblePositionY] === 0
       );
     });
-  }
-
-  isMoveValid(positionX: number, positionY: number): boolean {
-    return positionX >= 0 && positionX < 10 && positionY >= 0 && positionY < 10;
-  }  
-  
-  currentClasses={
-    selected: this,
-    possible: false,
-    disabled: false,
-    last:false
   }
 
   onRestartClick() {

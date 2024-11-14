@@ -1,4 +1,4 @@
-.board {
+:host {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
@@ -11,7 +11,7 @@
 }
 
 button {
-  margin:auto;
+  margin: auto;
   display: flex;
   background: linear-gradient(
     180deg,
@@ -26,20 +26,27 @@ button {
   &:hover {
     cursor: pointer;
   }
+  p {
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.selected > p{
-  display: flex;
-  margin: auto;
-  height: 38px;
-  width: 38px;
-  border-radius: 50%;
-  background: linear-gradient(220.53deg, #b2f763 0%, #26ab3f 76.95%);
-  font-size: 16px;
-  font-weight: 700;
-  color: red;
-  margin: auto;
-  line-height: 24px;
+.selected {
+  pointer-events: none;
+  p {
+    display: flex;
+    margin: auto;
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    background: linear-gradient(220.53deg, #b2f763 0%, #26ab3f 76.95%);
+    font-size: 16px;
+    font-weight: 700;
+    color: red;
+    margin: auto;
+    line-height: 24px;
+  }
 }
 
 .possible > p {
@@ -67,19 +74,22 @@ button {
   pointer-events: none;
 }
 
-.last> p {
-  display: flex;
-  text-align: center;
-  margin: auto;
-  height: 48px;
-  width: 48px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
-  font-size: 18px;
-  font-weight: 700;
-  color: blue;
-  margin: auto;
-  line-height: 27px;
+.last {
+  pointer-events: none;
+  p {
+    display: flex;
+    text-align: center;
+    margin: auto;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+    font-size: 18px;
+    font-weight: 700;
+    color: blue;
+    margin: auto;
+    line-height: 27px;
+  }
 }
 
 .number {
