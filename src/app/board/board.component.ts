@@ -6,7 +6,6 @@ import {
   input,
   output,
 } from '@angular/core';
-import { GameService } from '../game.service';
 import { isMoveValid } from '../common';
 @Component({
   selector: 'app-board',
@@ -28,8 +27,7 @@ export class BoardComponent {
   buttonsY = Array(10).fill(0);
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef,
-    public gameServise: GameService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   numberPosition(positionX: number, positionY: number) {
@@ -58,6 +56,8 @@ export class BoardComponent {
 
   selectCell(positionX: number, positionY: number) {
     this.selectSellEmitter.emit({ positionX, positionY });
+    console.log(positionX, positionY);
+    console.log(this.buttonState());
     if (this.historyMoves().length === 100) {
       this.winnerDialog.emit();
       return;

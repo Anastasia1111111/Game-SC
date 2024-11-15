@@ -12,6 +12,10 @@ enum states {
   providedIn: 'root',
 })
 export class GameService {
+
+  buttonState: states[][] = [];
+  historyMoves: number[][] = [];
+
   knightPositions = [
     [2, 1],
     [1, 2],
@@ -23,25 +27,22 @@ export class GameService {
     [2, -1],
   ];
 
-  buttonState: states[][] = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ];
 
-  historyMoves: number[][] = [];
+  arrayFill(height: number, witht: number){
+    let array:states[][] = [];
+    for(let i = 0; i < height; i++){
+      array[i] =[]
+      for(let j = 0; j < witht; j++){
+        array[i][j] = 0;
+      }
+    }
+    return array;
+  }
 
   calculationPositions(positionX: number, positionY: number) {
     this.buttonState[positionX][positionY] = 3;
-    for (let i = 0; i < 10; i++) {
-      for (let j = 0; j < 10; j++) {
+    for (let i = 0; i < this.buttonState.length; i++) {
+      for (let j = 0; j < this.buttonState[0].length; j++) {
         this.setDisabledState(i, j);
         this.setCellSelectable(i, j);
       }
@@ -90,8 +91,8 @@ export class GameService {
   }
 
   restart() {
-    for (let i = 0; i < 10; i++) {
-      for (let j = 0; j < 10; j++) {
+    for (let i = 0; i < this.buttonState.length; i++) {
+      for (let j = 0; j < this.buttonState[0].length; j++) {
         this.buttonState[i][j] = 0;
       }
     }
@@ -108,6 +109,5 @@ export class GameService {
         this.calculationPositions(last[0], last[1]);
       }
     }
-    console.log(this.buttonState);
   }
 }

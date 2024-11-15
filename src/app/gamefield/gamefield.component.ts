@@ -18,7 +18,9 @@ import { GameService } from '../game.service';
 export class GamefieldComponent {
   loseDialog = viewChild<ElementRef>('loseDialog');
   winnerDialog = viewChild<ElementRef>('winnerDialog');
-  constructor(public gameService: GameService) {}
+  constructor(public gameService: GameService) {
+    this.gameService.buttonState = this.gameService.arrayFill(10, 10);
+  }
 
   losePopUp(){
     this.loseDialog()?.nativeElement.showModal();
