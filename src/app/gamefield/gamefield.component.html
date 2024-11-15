@@ -1,40 +1,49 @@
-  <div class="game-field-header">
-    <span>10x10</span>
-    <div>
-      <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
-      <button class="restart" (click)="dialog.showModal()">
-        <span>RESTART</span>
-      </button>
-    </div>
+<div class="game-field-header">
+  <span>10x10</span>
+  <div>
+    <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
+    <button class="restart" (click)="dialog.showModal()">
+      <span>RESTART</span>
+    </button>
   </div>
+</div>
 
-  <app-board
-    [buttonState]="gameService.buttonState"
-    [historyMoves]="gameService.historyMoves"
-    [knightPositions]="gameService.knightPositions"
-    (restart)="onRestartClick()"
-    (selectSellEmitter)="onSelectCell($event)"
-    (loseDialog)="losePopUp()"
-    (winnerDialog)="winnerPopUp()"
-  >
-  </app-board>
+<app-board
+  [buttonState]="gameService.buttonState"
+  [historyMoves]="gameService.historyMoves"
+  [knightPositions]="gameService.knightPositions"
+  (restart)="onRestartClick()"
+  (selectSellEmitter)="onSelectCell($event)"
+  (loseDialog)="losePopUp()"
+  (winnerDialog)="winnerPopUp()"
+  [height]="gameService.sizeForm.value.height"
+  [width]="gameService.sizeForm.value.width"
+>
+</app-board>
 
-  <dialog #startDialog open>
+<dialog #startDialog open>
+  <div>
+    <header>
+      <span>START GAME</span>
+    </header>
     <div>
-      <header>
-        <span>START GAME</span>
-      </header>
-      <div>
-        <p class="message">Choose size bordGame</p>
-        <label>Height <input type="text" placeholder="Height"></label>
-        <label>Width <input type="text" placeholder="Width"></label>
-        <button class="exit" (click)="startDialog.close()">
-        <span>START</span>
+      <p class="message">Choose size bordGame</p>
+      <form [formGroup]="gameService.sizeForm">
+        <label
+          >Height
+          <input type="text" placeholder="Height" formControlName="height"
+        /></label>
+        <label
+          >Width <input type="text" placeholder="Width" formControlName="width"
+        /></label>
+        <button class="exit" (click)="startDialog.close(); createArray()">
+          <span>START</span>
         </button>
-      </div>
-      <footer></footer>
+      </form>
     </div>
-  </dialog>
+    <footer></footer>
+  </div>
+</dialog>
 
 <dialog #dialog>
   <div>
@@ -89,7 +98,7 @@
     <div>
       <img class="happy" src="../../assets/happy.svg" />
       <p class="message">You are WINNER!</p>
-      <button class = "exit" (click)="winnerDialog.close(); onRestartClick()">
+      <button class="exit" (click)="winnerDialog.close(); onRestartClick()">
         <span>RESTART</span>
       </button>
     </div>

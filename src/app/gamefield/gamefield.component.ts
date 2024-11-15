@@ -19,30 +19,29 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class GamefieldComponent {
   loseDialog = viewChild<ElementRef>('loseDialog');
   winnerDialog = viewChild<ElementRef>('winnerDialog');
-  constructor(public gameService: GameService) {
-    this.gameService.buttonState = this.gameService.arrayFill(10, 10);
-  }
+  constructor(public gameService: GameService) {}
 
-  getSize = new FormGroup({
-    height: new FormControl(),
-    width: new FormControl()
-  })
-
-  losePopUp(){
+  losePopUp() {
     this.loseDialog()?.nativeElement.showModal();
   }
 
-  winnerPopUp(){
+  winnerPopUp() {
     this.winnerDialog()?.nativeElement.showModal();
   }
+
   onStepBackClick() {
     this.gameService.stepBack();
   }
+
   onRestartClick() {
     this.gameService.restart();
   }
 
   onSelectCell(data: { positionX: number; positionY: number }) {
     this.gameService.selectCell(data.positionX, data.positionY);
+  }
+
+  createArray() {
+    this.gameService.arrayFill();
   }
 }

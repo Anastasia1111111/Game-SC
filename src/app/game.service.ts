@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { isMoveValid } from './common';
+import { FormControl, FormGroup } from '@angular/forms';
 
 enum states {
   selectable,
@@ -12,7 +13,6 @@ enum states {
   providedIn: 'root',
 })
 export class GameService {
-
   buttonState: states[][] = [];
   historyMoves: number[][] = [];
 
@@ -27,16 +27,31 @@ export class GameService {
     [2, -1],
   ];
 
+  sizeForm = new FormGroup({
+    height: new FormControl(),
+    width: new FormControl(),
+  });
 
-  arrayFill(height: number, width: number){
-    let array:states[][] = [];
-    for(let i = 0; i < height; i++){
-      array[i] =[]
-      for(let j = 0; j < width; j++){
-        array[i][j] = 0;
+  // arrayFill(height: number, width: number) {
+  //   let array: states[][] = [];
+  //   for (let i = 0; i < height; i++) {
+  //     array[i] = [];
+  //     for (let j = 0; j < width; j++) {
+  //       array[i][j] = 0;
+  //     }
+  //   }
+  //   return array;
+  // }
+
+  arrayFill() {
+    for (let i = 0; i < this.sizeForm.value.height; i++) {
+      this.buttonState[i] = [];
+      for (let j = 0; j < this.sizeForm.value.width; j++) {
+        this.buttonState[i][j] = 0;
       }
     }
-    return array;
+
+    console.log(this.buttonState);
   }
 
   calculationPositions(positionX: number, positionY: number) {
@@ -77,7 +92,14 @@ export class GameService {
       this.knightPositions.forEach((knightPosition) => {
         let possiblePositionX = last[0] + knightPosition[0];
         let possiblePositionY = last[1] + knightPosition[1];
-        if (isMoveValid(possiblePositionX, possiblePositionY)) {
+        if (
+          isMoveValid(
+            possiblePositionX,
+            possiblePositionY,
+            this.sizeForm.value.height,
+            this.sizeForm.value.width,
+          )
+        ) {
           if (
             possiblePositionX === positionX &&
             possiblePositionY === positionY &&
