@@ -19,6 +19,22 @@
   >
   </app-board>
 
+  <dialog #startDialog open>
+    <div>
+      <header>
+        <span>START GAME</span>
+      </header>
+      <div>
+        <p class="message">Choose size bordGame</p>
+        <label>Height <input type="text" placeholder="Height"></label>
+        <label>Width <input type="text" placeholder="Width"></label>
+        <button class="exit" (click)="startDialog.close()">
+        <span>START</span>
+        </button>
+      </div>
+      <footer></footer>
+    </div>
+  </dialog>
 
 <dialog #dialog>
   <div>

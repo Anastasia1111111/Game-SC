@@ -6,11 +6,12 @@ import {
 } from '@angular/core';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-gamefield',
   standalone: true,
-  imports: [BoardComponent],
+  imports: [BoardComponent, ReactiveFormsModule],
   templateUrl: './gamefield.component.html',
   styleUrl: './gamefield.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,6 +22,11 @@ export class GamefieldComponent {
   constructor(public gameService: GameService) {
     this.gameService.buttonState = this.gameService.arrayFill(10, 10);
   }
+
+  getSize = new FormGroup({
+    height: new FormControl(),
+    width: new FormControl()
+  })
 
   losePopUp(){
     this.loseDialog()?.nativeElement.showModal();

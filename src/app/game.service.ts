@@ -28,11 +28,11 @@ export class GameService {
   ];
 
 
-  arrayFill(height: number, witht: number){
+  arrayFill(height: number, width: number){
     let array:states[][] = [];
     for(let i = 0; i < height; i++){
       array[i] =[]
-      for(let j = 0; j < witht; j++){
+      for(let j = 0; j < width; j++){
         array[i][j] = 0;
       }
     }
