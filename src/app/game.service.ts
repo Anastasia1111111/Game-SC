@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { isMoveValid } from './common';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 enum states {
   selectable,
@@ -28,30 +28,17 @@ export class GameService {
   ];
 
   sizeForm = new FormGroup({
-    height: new FormControl(),
-    width: new FormControl(),
+    height: new FormControl(null,[Validators.required, Validators.min(4), Validators.max(20)]),
+    width: new FormControl(null, [Validators.required, Validators.min(4), Validators.max(20)]),
   });
 
-  // arrayFill(height: number, width: number) {
-  //   let array: states[][] = [];
-  //   for (let i = 0; i < height; i++) {
-  //     array[i] = [];
-  //     for (let j = 0; j < width; j++) {
-  //       array[i][j] = 0;
-  //     }
-  //   }
-  //   return array;
-  // }
-
   arrayFill() {
-    for (let i = 0; i < this.sizeForm.value.height; i++) {
+    for (let i = 0; i < this.sizeForm.value.height!; i++) {
       this.buttonState[i] = [];
-      for (let j = 0; j < this.sizeForm.value.width; j++) {
+      for (let j = 0; j < this.sizeForm.value.width!; j++) {
         this.buttonState[i][j] = 0;
       }
     }
-
-    console.log(this.buttonState);
   }
 
   calculationPositions(positionX: number, positionY: number) {
@@ -96,8 +83,8 @@ export class GameService {
           isMoveValid(
             possiblePositionX,
             possiblePositionY,
-            this.sizeForm.value.height,
-            this.sizeForm.value.width,
+            this.sizeForm.value.height!,
+            this.sizeForm.value.width!,
           )
         ) {
           if (

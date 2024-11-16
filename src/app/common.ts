@@ -4,5 +4,5 @@ export function isMoveValid(
   height: number,
   width: number,
 ): boolean {
-  return positionX >= 0 && positionX < 10 && positionY >= 0 && positionY < 10;
+  return positionX >= 0 && positionX < height && positionY >= 0 && positionY < width;
 }

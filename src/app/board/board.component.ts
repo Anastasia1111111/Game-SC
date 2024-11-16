@@ -56,7 +56,7 @@ export class BoardComponent {
 
   selectCell(positionX: number, positionY: number) {
     this.selectSellEmitter.emit({ positionX, positionY });
-    console.log(this.height(), this.width());
+    console.log(positionX, positionY);
     console.log(this.buttonState());
     if (this.historyMoves().length === this.height() * this.width()) {
       this.winnerDialog.emit();
@@ -88,5 +88,6 @@ export class BoardComponent {
 
   ngDoCheck() {
     this.changeDetectorRef.detectChanges();
+    document.documentElement.style.setProperty("--columns", "this.width()");
   }
 }

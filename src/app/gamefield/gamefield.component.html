@@ -16,8 +16,10 @@
   (selectSellEmitter)="onSelectCell($event)"
   (loseDialog)="losePopUp()"
   (winnerDialog)="winnerPopUp()"
-  [height]="gameService.sizeForm.value.height"
-  [width]="gameService.sizeForm.value.width"
+  [height]="gameService.sizeForm.value.height!"
+  [width]="gameService.sizeForm.value.width!"
+  [style.--columns]="gameService.sizeForm.value.height!"
+  [style.--rows]="gameService.sizeForm.value.width!"
 >
 </app-board>
 
@@ -36,7 +38,7 @@
         <label
           >Width <input type="text" placeholder="Width" formControlName="width"
         /></label>
-        <button class="exit" (click)="startDialog.close(); createArray()">
+        <button class="exit" type="submit" [disabled]="gameService.sizeForm.invalid" (click)="startDialog.close(); createArray()">
           <span>START</span>
         </button>
       </form>
