@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: auto;
+}
 .circleBlue {
   position: absolute;
   border-radius: 50%;
@@ -19,14 +24,14 @@
   margin-top: 75vh;
 }
 
-app-gamefield{
+app-gamefield {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   margin-top: 72px;
   padding: 40px 40px;
-  width: 780px;
+  width: fit-content;
   border-radius: 25px;
   border-image-source: radial-gradient(
       0% 50% at 50% 50%,

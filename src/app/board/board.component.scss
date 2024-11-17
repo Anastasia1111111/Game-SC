@@ -1,13 +1,12 @@
 :host {
   display: grid;
-  grid-template-columns: repeat(var(--columns), 74px);
-  grid-template-rows: repeat(var(--rows), 74px);
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
   border-radius: 20px;
-  //height: 780px;
-  //width: 780px;
   background: linear-gradient(180deg, #aac2ff 0%, #c81bf1 100%);
   backdrop-filter: blur(101px);
   box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 0px 10px 10px 0px;
 }
 
 button {

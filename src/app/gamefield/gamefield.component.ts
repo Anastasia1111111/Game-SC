@@ -19,6 +19,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class GamefieldComponent {
   loseDialog = viewChild<ElementRef>('loseDialog');
   winnerDialog = viewChild<ElementRef>('winnerDialog');
+  startDialog = viewChild<ElementRef>('startDialog');
   constructor(public gameService: GameService) {}
 
   losePopUp() {
@@ -42,6 +43,11 @@ export class GamefieldComponent {
   }
 
   createArray() {
+    if (this.gameService.sizeForm.invalid) {
+      this.gameService.sizeForm.markAllAsTouched();
+      return;
+    }
+    this.startDialog()?.nativeElement.close();
     this.gameService.arrayFill();
   }
 }

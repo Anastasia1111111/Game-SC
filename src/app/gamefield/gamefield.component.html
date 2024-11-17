@@ -1,5 +1,11 @@
 <div class="game-field-header">
-  <span>10x10</span>
+  <span>
+    @if (gameService.buttonState.length) {
+      {{ gameService.sizeForm.value.width }}x{{
+        gameService.sizeForm.value.height
+      }}
+    }
+  </span>
   <div>
     <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
     <button class="restart" (click)="dialog.showModal()">
@@ -8,37 +14,39 @@
   </div>
 </div>
 
-<app-board
-  [buttonState]="gameService.buttonState"
-  [historyMoves]="gameService.historyMoves"
-  [knightPositions]="gameService.knightPositions"
-  (restart)="onRestartClick()"
-  (selectSellEmitter)="onSelectCell($event)"
-  (loseDialog)="losePopUp()"
-  (winnerDialog)="winnerPopUp()"
-  [height]="gameService.sizeForm.value.height!"
-  [width]="gameService.sizeForm.value.width!"
-  [style.--columns]="gameService.sizeForm.value.height!"
-  [style.--rows]="gameService.sizeForm.value.width!"
->
-</app-board>
+@if (gameService.buttonState.length) {
+  <app-board
+    [buttonState]="gameService.buttonState"
+    [historyMoves]="gameService.historyMoves"
+    [knightPositions]="gameService.knightPositions"
+    (restart)="onRestartClick()"
+    (selectSellEmitter)="onSelectCell($event)"
+    (loseDialog)="losePopUp()"
+    (winnerDialog)="winnerPopUp()"
+    [height]="gameService.sizeForm.value.height!"
+    [width]="gameService.sizeForm.value.width!"
+    [style.--columns]="gameService.sizeForm.value.width!"
+    [style.--rows]="gameService.sizeForm.value.height!"
+  >
+  </app-board>
+}
 
-<dialog #startDialog open>
+<dialog class="start-dialog" #startDialog open>
   <div>
     <header>
       <span>START GAME</span>
     </header>
     <div>
-      <p class="message">Choose size bordGame</p>
+      <p class="choose">Choose the size of the playing field</p>
       <form [formGroup]="gameService.sizeForm">
+        <label
+          >Width <input type="text" placeholder="Width" formControlName="width"
+        /></label>
         <label
           >Height
           <input type="text" placeholder="Height" formControlName="height"
         /></label>
-        <label
-          >Width <input type="text" placeholder="Width" formControlName="width"
-        /></label>
-        <button class="exit" type="submit" [disabled]="gameService.sizeForm.invalid" (click)="startDialog.close(); createArray()">
+        <button class="exit" type="submit" (click)="createArray()">
           <span>START</span>
         </button>
       </form>
