@@ -28,12 +28,12 @@ export class GameService {
   ];
 
   sizeForm = new FormGroup({
-    height: new FormControl(null, [
+    height: new FormControl(10, [
       Validators.required,
       Validators.min(4),
       Validators.max(20),
     ]),
-    width: new FormControl(null, [
+    width: new FormControl(10, [
       Validators.required,
       Validators.min(4),
       Validators.max(20),
@@ -47,7 +47,6 @@ export class GameService {
         this.buttonState[i][j] = 0;
       }
     }
-    console.log(this.buttonState);
   }
 
   calculationPositions(positionX: number, positionY: number) {
@@ -64,7 +63,6 @@ export class GameService {
     this.checkLastCell();
     this.historyMoves.push([positionX, positionY]);
     this.calculationPositions(positionX, positionY);
-    console.log(positionX);
   }
 
   setDisabledState(positionX: number, positionY: number) {

@@ -292,7 +292,7 @@ input.ng-invalid.ng-touched {
 }
 
 .start-dialog {
-  position: relative;
+  //position: relative;
   header {
     span {
       padding: 0px;
@@ -303,25 +303,18 @@ input.ng-invalid.ng-touched {
   }
 }
 
-label {
-  display: block;
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 56px;
-  color: #fce7ff;
-  text-align: center;
-}
-
 input {
-  display: block;
-  margin: auto;
-  margin-bottom: 10px;
   background-color: #fce7ff;
+  font-size: 45px;
+  font-weight: 600;
+  border-radius:10px;
+  border: 5px solid;
+  border-color: #d6bada;
+  width: 150px;
+  text-align: center;
+  color:rgba(123, 64, 172, 1);
 }
 
-input {
-  height: 30px;
-}
 
 .choose {
   font-size: 38px;
@@ -331,4 +324,18 @@ input {
   margin: 0px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+form{
+  text-align: center;
+  justify-content: center;
+  margin-top: 70px;
+  input + span{
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #fce7ff;
+  }
+  button{
+    margin-top: 70px;
+  }
 }

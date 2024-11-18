@@ -48,6 +48,13 @@ export class GamefieldComponent {
       return;
     }
     this.startDialog()?.nativeElement.close();
-    this.gameService.arrayFill();
+    if(!this.gameService.buttonState.length){
+      this.gameService.arrayFill();
+    }else{
+      this.gameService.buttonState.length = 0;
+      this.gameService.arrayFill();
+    }
+  
+    console.log(this.gameService.buttonState);
   }
 }

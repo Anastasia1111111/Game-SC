@@ -1,15 +1,13 @@
 <div class="game-field-header">
   <span>
-    @if (gameService.buttonState.length) {
       {{ gameService.sizeForm.value.width }}x{{
         gameService.sizeForm.value.height
       }}
-    }
   </span>
   <div>
     <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
-    <button class="restart" (click)="dialog.showModal()">
-      <span>RESTART</span>
+    <button class="restart" (click)="startDialog.showModal()">
+      <span>NEW GAME</span>
     </button>
   </div>
 </div>
@@ -39,36 +37,15 @@
     <div>
       <p class="choose">Choose the size of the playing field</p>
       <form [formGroup]="gameService.sizeForm">
-        <label
-          >Width <input type="text" placeholder="Width" formControlName="width"
-        /></label>
-        <label
-          >Height
-          <input type="text" placeholder="Height" formControlName="height"
-        /></label>
+       
+          <input type="text" formControlName="width"/>
+          <span>X</span>
+          <input type="text" formControlName="height"/>
+      
         <button class="exit" type="submit" (click)="createArray()">
           <span>START</span>
         </button>
       </form>
-    </div>
-    <footer></footer>
-  </div>
-</dialog>
-
-<dialog #dialog>
-  <div>
-    <header class="restart-button">
-      <span>RESTART</span>
-      <img (click)="dialog.close()" src="../../assets/close.svg" />
-    </header>
-    <div>
-      <p class="question">Are you sure?</p>
-      <div class="flex">
-        <button class="confirm" (click)="dialog.close(); onRestartClick()">
-          <span>YES</span>
-        </button>
-        <button class="cancel" (click)="dialog.close()"><span>NO</span></button>
-      </div>
     </div>
     <footer></footer>
   </div>

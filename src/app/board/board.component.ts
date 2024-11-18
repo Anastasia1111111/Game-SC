@@ -36,9 +36,6 @@ export class BoardComponent {
 
   checkState(positionX: number, positionY: number) {
     if (this.buttonState().length !== 0) {
-      console.log(positionX, '-', positionY);
-
-      let temp = this.buttonState()[positionX][positionY];
       if (this.historyMoves().length === 0) {
         return;
       }
