@@ -1,35 +1,36 @@
-<div class="game-field-header">
-  <span>
-      {{ gameService.sizeForm.value.width }}x{{
-        gameService.sizeForm.value.height
-      }}
-  </span>
-  <div>
-    <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
-    <button class="restart" (click)="startDialog.showModal()">
-      <span>NEW GAME</span>
-    </button>
-  </div>
-</div>
-
 @if (gameService.buttonState.length) {
-  <app-board
-    [buttonState]="gameService.buttonState"
-    [historyMoves]="gameService.historyMoves"
-    [knightPositions]="gameService.knightPositions"
-    (restart)="onRestartClick()"
-    (selectSellEmitter)="onSelectCell($event)"
-    (loseDialog)="losePopUp()"
-    (winnerDialog)="winnerPopUp()"
-    [height]="gameService.sizeForm.value.height!"
-    [width]="gameService.sizeForm.value.width!"
-    [style.--columns]="gameService.sizeForm.value.width!"
-    [style.--rows]="gameService.sizeForm.value.height!"
-  >
-  </app-board>
-}
+  <div>
+    <div class="game-field-header">
+      <span>
+        {{ gameService.sizeForm.value.width }}x{{
+          gameService.sizeForm.value.height
+        }}
+      </span>
+      <div>
+        <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
+        <button class="restart" (click)="newGame()">
+          <span>NEW GAME</span>
+        </button>
+      </div>
+    </div>
 
-<dialog class="start-dialog" #startDialog open>
+    <app-board
+      [buttonState]="gameService.buttonState"
+      [historyMoves]="gameService.historyMoves"
+      [knightPositions]="gameService.knightPositions"
+      (restart)="onRestartClick()"
+      (selectSellEmitter)="onSelectCell($event)"
+      (loseDialog)="losePopUp()"
+      (winnerDialog)="winnerPopUp()"
+      [height]="gameService.sizeForm.value.height!"
+      [width]="gameService.sizeForm.value.width!"
+      [style.--columns]="gameService.sizeForm.value.width!"
+      [style.--rows]="gameService.sizeForm.value.height!"
+    >
+    </app-board>
+  </div>
+}
+<dialog class="start-dialog" #startDialog>
   <div>
     <header>
       <span>START GAME</span>
@@ -37,12 +38,10 @@
     <div>
       <p class="choose">Choose the size of the playing field</p>
       <form [formGroup]="gameService.sizeForm">
-       
-          <input type="text" formControlName="width"/>
-          <span>X</span>
-          <input type="text" formControlName="height"/>
-      
-        <button class="exit" type="submit" (click)="createArray()">
+        <input type="text" maxlength="6" formControlName="width" />
+        <span>X</span>
+        <input type="text" maxlength="6" formControlName="height" />
+        <button class="exit" type="submit" (click)="createButtonState()">
           <span>START</span>
         </button>
       </form>

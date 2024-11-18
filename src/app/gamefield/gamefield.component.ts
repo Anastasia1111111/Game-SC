@@ -22,6 +22,10 @@ export class GamefieldComponent {
   startDialog = viewChild<ElementRef>('startDialog');
   constructor(public gameService: GameService) {}
 
+  ngOnInit() {
+    this.startDialog()?.nativeElement.showModal();
+  }
+
   losePopUp() {
     this.loseDialog()?.nativeElement.showModal();
   }
@@ -42,19 +46,17 @@ export class GamefieldComponent {
     this.gameService.selectCell(data.positionX, data.positionY);
   }
 
-  createArray() {
+  createButtonState() {
     if (this.gameService.sizeForm.invalid) {
       this.gameService.sizeForm.markAllAsTouched();
       return;
     }
     this.startDialog()?.nativeElement.close();
-    if(!this.gameService.buttonState.length){
-      this.gameService.arrayFill();
-    }else{
-      this.gameService.buttonState.length = 0;
-      this.gameService.arrayFill();
-    }
-  
-    console.log(this.gameService.buttonState);
+    this.gameService.arrayFill();
+  }
+
+  newGame() {
+    this.startDialog()?.nativeElement.showModal();
+    this.gameService.buttonState.length = 0;
   }
 }

@@ -1,3 +1,35 @@
+:host > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 72px;
+  padding: 40px 40px;
+  width: fit-content;
+  border-radius: 25px;
+  border-image-source: radial-gradient(
+      0% 50% at 50% 50%,
+      #0f0f0f 0%,
+      rgba(21, 21, 21, 0) 100%
+    ),
+    radial-gradient(
+      198.89% 50% at 50% 50%,
+      #0a7abf 0%,
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    radial-gradient(
+      170.42% 50% at 50% 50%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  background: linear-gradient(
+    111.49deg,
+    rgba(255, 255, 255, 0.4) -8.95%,
+    rgba(255, 255, 255, 0.01) 114%
+  );
+  backdrop-filter: blur(100px);
+}
+
 .game-field-header {
   display: flex;
   justify-content: space-between;
@@ -32,7 +64,6 @@ app-board {
   line-height: 24px;
   text-align: center;
   color: #b6f6ff;
-  font-family: Poppins;
   &:hover {
     cursor: pointer;
     background: linear-gradient(
@@ -45,10 +76,8 @@ app-board {
 }
 
 span {
-  line-height: 72px;
   font-weight: 700;
   font-size: 48px;
-  text-align: center;
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(
@@ -75,7 +104,6 @@ span {
     line-height: 24px;
     margin: auto;
     color: #ffeed8;
-    font-family: Poppins;
   }
 
   &:hover {
@@ -117,7 +145,6 @@ header {
   height: 121px;
   > span {
     margin: auto;
-    padding-left: 68px;
     font-size: 48px;
     font-weight: 800;
     line-height: 72px;
@@ -307,35 +334,30 @@ input {
   background-color: #fce7ff;
   font-size: 45px;
   font-weight: 600;
-  border-radius:10px;
+  border-radius: 10px;
   border: 5px solid;
   border-color: #d6bada;
   width: 150px;
   text-align: center;
-  color:rgba(123, 64, 172, 1);
+  color: rgba(123, 64, 172, 1);
 }
-
 
 .choose {
   font-size: 38px;
-  font-weight: 400;
-  line-height: 56px;
   color: #fce7ff;
-  margin: 0px;
-  margin-bottom: 20px;
   text-align: center;
 }
 
-form{
+form {
   text-align: center;
   justify-content: center;
   margin-top: 70px;
-  input + span{
+  input + span {
     margin-left: 20px;
     margin-right: 20px;
     color: #fce7ff;
   }
-  button{
+  button {
     margin-top: 70px;
   }
 }

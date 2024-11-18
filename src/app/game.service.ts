@@ -47,6 +47,7 @@ export class GameService {
         this.buttonState[i][j] = 0;
       }
     }
+    console.log(this.buttonState);
   }
 
   calculationPositions(positionX: number, positionY: number) {
@@ -63,6 +64,7 @@ export class GameService {
     this.checkLastCell();
     this.historyMoves.push([positionX, positionY]);
     this.calculationPositions(positionX, positionY);
+    console.log(positionX);
   }
 
   setDisabledState(positionX: number, positionY: number) {
