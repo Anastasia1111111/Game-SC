@@ -1,5 +1,3 @@
-@if (gameService.buttonState.length) {
-  <div>
     <div class="game-field-header">
       <span>
         {{ gameService.sizeForm.value.width }}x{{
@@ -8,12 +6,13 @@
       </span>
       <div>
         <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
-        <button class="restart" (click)="newGame()">
+        <button class="restart" (click)="newGame(); onRestartClick()">
           <span>NEW GAME</span>
         </button>
       </div>
     </div>
-
+    @if (gameService.buttonState.length) {
+      <div class="board">
     <app-board
       [buttonState]="gameService.buttonState"
       [historyMoves]="gameService.historyMoves"
@@ -41,7 +40,7 @@
         <input type="text" maxlength="6" formControlName="width" />
         <span>X</span>
         <input type="text" maxlength="6" formControlName="height" />
-        <button class="exit" type="submit" (click)="createButtonState()">
+        <button class="exit" type="submit" [disabled]="gameService.sizeForm.invalid" (click)="createButtonState()">
           <span>START</span>
         </button>
       </form>
