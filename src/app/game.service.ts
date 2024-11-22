@@ -28,12 +28,12 @@ export class GameService {
   ];
 
   sizeForm = new FormGroup({
-    height: new FormControl(15, [
+    height: new FormControl(4, [
       Validators.required,
       Validators.min(4),
       Validators.max(20),
     ]),
-    width: new FormControl(15, [
+    width: new FormControl(4, [
       Validators.required,
       Validators.min(4),
       Validators.max(20),

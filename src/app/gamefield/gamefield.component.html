@@ -1,8 +1,10 @@
     <div class="game-field-header">
       <span>
+        @if (gameService.buttonState.length) {
         {{ gameService.sizeForm.value.width }}x{{
           gameService.sizeForm.value.height
         }}
+        }
       </span>
       <div>
         <button class="step-back" (click)="onStepBackClick()">STEP BACK</button>
